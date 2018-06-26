@@ -28,8 +28,6 @@ def login():
 		return "no this account"
 @app.route('/signup',methods=['GET','POST'])
 def signup():
-	if request.method=='GET':
-		return 'postyes'
 	if request.method=='POST':
 		request_message = request.get_json()    
 		account = {'username':request_message['signupUserName'],'name':request_message['signupName'],'password':request_message['signupPassword']}

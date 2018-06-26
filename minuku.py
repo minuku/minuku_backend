@@ -1,4 +1,4 @@
-from flask import Flask,request,Request,Response,json
+from flask import Flask,request,Request,Response,json,abort,make_response
 #from flask_restful import abort, Api, fields, marshal_with, reqparse, Resource
 from html.parser import HTMLParser
 from pymongo import MongoClient,InsertOne, DeleteOne, ReplaceOne
@@ -21,11 +21,14 @@ def login():
 			if request_message['loginName'] == item['username']:
 				if request_message['loginPassword'] == item['password']:
 					#return json.jsonify(name="correct account",password="")
-					return "correct account"
+					#return "correct account"
+					return make_response(json.jsonify({'msg':'success'}),200)
 				#else :return json.jsonify(name="",password="wrong password")
-				else : return "wrong Password"		
+				#else : return "wrong Password"
+				else : return make_response(json.jsonify({'error':'wrong password'}),404)		
 		#return json.jsonify(name="no this account",password="")
-		return "no this account"
+		#return "no this account"
+		return make_response(json.jsonify({'error':'no this account'}),404)
 @app.route('/signup',methods=['GET','POST'])
 def signup():
 	if request.method=='POST':

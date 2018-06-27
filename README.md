@@ -22,5 +22,4 @@ URL = https://minukutest.nctu.me
 <p>3. /minukutest/queryProfile<br></p>
    <p>http method : GET<br></p>
    <p> input : {'signupAccount':'your email addr'}<br></p>
-   <p>response1 : {'error':'this account already used'},404<br></p>
-   <p>response2 : {"signupAccount":"your email addr","signupEmail":"your email addr","signupPassword":"your password","userName":"your name"},200<br></p>
+   <p>response1 : {"signupAccount":"your email addr","signupEmail":"your email addr","signupPassword":"your password","userName":"your name"},200<br></p>

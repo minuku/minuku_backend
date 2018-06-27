@@ -17,5 +17,5 @@ URL = https://minukutest.nctu.me
    <p>method : post<br></p>
    <p> input : {'signupAccount':'your email addr','userName':'your name','signupPassword':'your passwrod,'signupEmail':'your email addr']}<br></p>
    <p>response1 : {'error':'this account already used'},404<br></p>
-   <p>response2 : {'msg':'create account success','userName':'your name','signupAccount','your signup email addr'},200<br></p>
+   <p>response2 : {'msg':'create account success','userName':'your name','signupAccount':'your signup email addr'},200<br></p>
 

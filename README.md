@@ -6,7 +6,7 @@ URL = https://minukutest.nctu.me
 
 <h2>URI</h2>
 
-<p>1./minukutest/logini<br></p>
+<p>1./minukutest/login<br></p>
   <p>method : post<br></p> 
   <p>input : {'signupAccount':'your signup email addr','signupPassword':'your password'}<br></p>
   <p>response1 : {'msg':'success'},200  # login success<br></p>

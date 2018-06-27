@@ -8,7 +8,7 @@ URL = https://minukutest.nctu.me
 
 <p>1./minukutest/logini<br></p>
   <p>method : post<br></p> 
-  <p>input : {'signupAccount':'your signup email addr','loginPassword':'your password'}<br></p>
+  <p>input : {'signupAccount':'your signup email addr','signupPassword':'your password'}<br></p>
   <p>response1 : {'msg':'success'},200  # login success<br></p>
   <p>response2 : {'error':'wrong password'},404 #wrong pw<br></p>
   <p>response3 : {'error':'no this account'},404 #wrong account<br></p>

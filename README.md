@@ -1,18 +1,18 @@
 # minuku_backend
 **This is minuku backend**
 
-# REST API Documentation
+## REST API Documentation
 
 #### URL = https://minukutest.nctu.me/minukutest
 
-## login
+### login
 Login method.
 
   | Title  | mention |
   | ------------- | ------------- |
   | URL  | `/login`  |
   | Method  | **POST** |
-  | URL Params | **Required:** <br/> `id=[integer]` |
+  | URL Params | none |
   | Data Params | **Required:** <br/> `{signupAccount: 'signup@email',signupPassword: 'password'}` |
   | Success Response  | **Code:** 200 <br /> **Content:** `{ msg:'success', userName:'your name', signupAccount: 'your signup email addr'}` |
   | Error Response  | **Code:** 404 WRONG PW <br /> **Content:** ` {'error': 'wrong password'}` |
@@ -25,7 +25,7 @@ Login method.
   ```
   * response: ```{"msg":"success","signupAccount":"armuro@test.com","userName":"armuro"}```
 
-## signup
+### signup
 signup method.
 
   | Title  | mention |
@@ -45,14 +45,14 @@ signup method.
   * response: ```{"msg":"create account success","signupAccount":"jack@test.com","userName":"jack"}```
 
 
-## login
-Login method.
+### User Porfile
+Return json data about uesr porfile.
 
   | Title  | mention |
   | ------------- | ------------- |
-  | URL  | `/minukutest/<string:signupAccount>/profile`  |
+  | URL  | `/<string:signupAccount>/profile`  |
   | Method  | **GET** |
-  | URL Params | **Required:** <br/> `id=[integer]` |
+  | URL Params | **Required:** <br/> `signupAccount=[string]` |
   | Data Params | none |
   | Success Response  | **Code:** 200 <br /> **Content:** `{"signupAccount":"your email addr","signupEmail":"your email addr","signupPassword":"your password","userName":"your name","signupTime":"your signuptime"}` |
 

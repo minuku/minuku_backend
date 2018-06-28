@@ -27,7 +27,7 @@ response: {"msg":"success","signupAccount":"armuro@test.com","userName":"armuro"
 <p>ex:<br>
 curl -iX POST -H "Content-Type:application/json" -d '{"signupAccount":"jack@test.com","userName":"jack","signupPassword":"123","signupEmail":"jack@test.com"}' https://minukutest.nctu.me/minukutest/signup<br>
 response: {"msg":"create account success","signupAccount":"jack@test.com","userName":"jack"}<br></p>
-<p>3. /minukutest/\<string:signupAccount\>/profile<br></p>
+<p>3. /minukutest/<$lt>string:signupAccount$gt<$gl>/profile<br></p>
    <p>http method : GET<br></p>
    <p>response1 : {"signupAccount":"your email addr","signupEmail":"your email addr","signupPassword":"your password","userName":"your name","signupTime":"your signuptime"},200<br></p>
 

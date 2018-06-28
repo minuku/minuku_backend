@@ -6,51 +6,28 @@ URL = https://minukutest.nctu.me
 
 # Method
 
-## URL = https://minukutest.nctu.me/minukutest
-**login**
+#### URL = https://minukutest.nctu.me/minukutest
+
+### login
 ----
   Login method.
 
-* **URL**
+  | Title  | mention |
+  | ------------- | ------------- |
+  | URL  | `/login`  |
+  | Method  | **POST** |
+  | URL Params | **Required:** <br/> `id=[integer]` |
+  | Data Params | **Required:** <br/> `{signupAccount: 'signup@email',signupPassword: 'password'}` |
+  | Success Response  | **Code:** 200 <br /> **Content:** `{ msg:'success', userName:'your name', signupAccount: 'your signup email addr'}` |
+  | Error Response  | **Code:** 404 WRONG PW <br /> **Content:** ` {'error': 'wrong password'}` |
+  | Error Response  | **Code:** 404 WRONG ACCOUNT <br /> **Content:** ` {'error': 'no this account'}` |
 
-  /login
+* **Sample Call:**
 
-* **Method:**
-
-  `POST`
-
-*  **URL Params**
-
-   **Required:**
-
-   `id=[integer]`
-
-* **Data Params**
-
-  `{
-    signupAccount: 'signup@email',
-    signupPassword: 'password'
-  }`
-
-* **Success Response:**
-
-  * **Code:** 200 <br />
-    **Content:** `{ msg:'success', userName:'your name', signupAccount: 'your signup email addr'}`
-
-* **Error Response:**
-
-  * **Code:** 404 WRONG PW <br />
-    **Content:** ` {'error': 'wrong password'}`
-
-  * **Code:** 404 WRONG ACCOUNT <br />
-    **Content:** ` {'error': 'no this account'}`
-
-  * **Sample Call:**
-
-    ```curl
-    curl -iX POST -H "Content-Type:application/json" -d '{"signupAccount":"armuro@test.com","userName":"armuro","signupPassword":"minuku","signupEmail":"armuro@test.com"}' https://minukutest.nctu.me/minukutest/login
-    ```
-    response: {"msg":"success","signupAccount":"armuro@test.com","userName":"armuro"}<br></p>
+  ```curl
+  curl -iX POST -H "Content-Type:application/json" -d '{"signupAccount":"armuro@test.com","userName":"armuro","signupPassword":"minuku","signupEmail":"armuro@test.com"}' https://minukutest.nctu.me/minukutest/login
+  ```
+  * response: {"msg":"success","signupAccount":"armuro@test.com","userName":"armuro"}<br></p>
 
 <p>1./minukutest/login<br></p>
   <p>http method : post<br></p>

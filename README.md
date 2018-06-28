@@ -27,11 +27,10 @@ response: {"msg":"success","signupAccount":"armuro@test.com","userName":"armuro"
 <p>ex:<br>
 curl -iX POST -H "Content-Type:application/json" -d '{"signupAccount":"jack@test.com","userName":"jack","signupPassword":"123","signupEmail":"jack@test.com"}' https://minukutest.nctu.me/minukutest/signup<br>
 response: {"msg":"create account success","signupAccount":"jack@test.com","userName":"jack"}<br></p>
-<p>3. /minukutest/queryProfile<br></p>
+<p>3. /minukutest/\<string:signupAccount\>/profile<br></p>
    <p>http method : GET<br></p>
-   <p> input : {'signupAccount':'your email addr'}<br></p>
-   <p>response1 : {"signupAccount":"your email addr","signupEmail":"your email addr","signupPassword":"your password","userName":"your name"},200<br></p>
+   <p>response1 : {"signupAccount":"your email addr","signupEmail":"your email addr","signupPassword":"your password","userName":"your name","signupTime":"your signuptime"},200<br></p>
 
 <p>ex:</br>
-curl -iX GET -H "Content-Type:application/json" -d '{"signupAccount":"test1@test.com"}' https://minukutest.nctu.me/minukutest/queryProfile<br>
-response:{"signupAccount":"test1@test.com","signupEmail":"test1@test.com","signupPassword":"123","userName":"jim"}<br><p> 
+curl -iX GET -H "Content-Type:application/json" https://minukutest.nctu.me/minukutest/test@test.com/profile<br>
+response:{"signupAccount":"test@test.com","signupEmail":"test@test.com","signupPassword":"minuku","userName":"armuro","signupTime":"******"}<br><p> 

@@ -50,7 +50,7 @@ signup method.
   * response: ```{"msg":"create account success","signupAccount":"jack@test.com","userName":"jack"}```
 
 
-### User Porfile
+### User Profile
 Return json data about uesr porfile.
 
   | Title  | mention |

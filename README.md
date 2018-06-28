@@ -4,6 +4,11 @@
 ## REST API Documentation
 
 #### URL = https://minukutest.nctu.me/minukutest
+Endpoints for minuku project.
+
+* [Login](#login) : `POST /login`
+* [Signup](#signup) : `POST /signup`
+* [Show User Profile](#user-profile) : `GET /:signupAccount/profile`
 
 ### login
 Login method.

@@ -18,11 +18,11 @@ def login():
 	if request.method=='POST':
 		request_message = request.get_json()
 		for item in accountCollection.find():
-			if request_message['loginName'] == item['username']:
-				if request_message['loginPassword'] == item['password']:
+			if request_message['signupAccount'] == item['signupAccount']:
+				if request_message['signupPassword'] == item['signupPassword']:
 					#return json.jsonify(name="correct account",password="")
 					#return "correct account"
-					return make_response(json.jsonify({'msg':'success'}),200)
+					return make_response(json.jsonify({'msg':'success','userName':item['userName'],'signupAccount':item['signupAccount']}),200)
 				#else :return json.jsonify(name="",password="wrong password")
 				#else : return "wrong Password"
 				else : return make_response(json.jsonify({'error':'wrong password'}),404)		
@@ -33,12 +33,18 @@ def login():
 def signup():
 	if request.method=='POST':
 		request_message = request.get_json()    
-		account = {'username':request_message['signupUserName'],'name':request_message['signupName'],'password':request_message['signupPassword']}
+		account = {'signupAccount':request_message['signupAccount'],'userName':request_message['userName'],'signupPassword':request_message['signupPassword'],'signupEmail':request_message['signupEmail']}
 		for item in accountCollection.find():
-			if request_message['signupUserName'] == item['username']:
-				return json.jsonify(username="this account already in use",name="",password="")
-			if request_message['signupName'] == item['username']:
-				return json.jsonify(username="",name="this account already apply",password="")
+			if request_message['signupAccount'] == item['signupAccount']:
+				return make_response(json.jsonify({'error':'this account already used'}),404)
 		accountCollection.insert_one(account)
-		return json.jsonify(username="apply ok",name="",password="")
+		return make_response(json.jsonify({'msg':'create account success','userName':request_message['userName'],'signupAccount':request_message['signupAccount']}),200)
+
+@app.route('/queryProfile',methods=['GET','POST'])
+def queryProfile():
+	if request.method =='GET':
+		request_message = request.get_json()
+		for item in accountCollection.find():
+			if request_message['signupAccount']== item['signupAccount']:
+				return make_response(json.jsonify({'signupAccount':item['signupAccount'],'userName':item['userName'],'signupPassword':item['signupPassword'],'signupEmail':item['signupEmail']}),200)
 

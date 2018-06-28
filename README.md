@@ -4,10 +4,56 @@
 
 URL = https://minukutest.nctu.me
 
-<h2>Method</h2>
+# Method
+
+## URL = https://minukutest.nctu.me/minukutest
+**login**
+----
+  Login method.
+
+* **URL**
+
+  /login
+
+* **Method:**
+
+  `POST`
+
+*  **URL Params**
+
+   **Required:**
+
+   `id=[integer]`
+
+* **Data Params**
+
+  `{
+    signupAccount: 'signup@email',
+    signupPassword: 'password'
+  }`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{ msg:'success', userName:'your name', signupAccount: 'your signup email addr'}`
+
+* **Error Response:**
+
+  * **Code:** 404 WRONG PW <br />
+    **Content:** ` {'error': 'wrong password'}`
+
+  * **Code:** 404 WRONG ACCOUNT <br />
+    **Content:** ` {'error': 'no this account'}`
+
+  * **Sample Call:**
+
+    ```curl
+    curl -iX POST -H "Content-Type:application/json" -d '{"signupAccount":"armuro@test.com","userName":"armuro","signupPassword":"minuku","signupEmail":"armuro@test.com"}' https://minukutest.nctu.me/minukutest/login
+    ```
+    response: {"msg":"success","signupAccount":"armuro@test.com","userName":"armuro"}<br></p>
 
 <p>1./minukutest/login<br></p>
-  <p>http method : post<br></p> 
+  <p>http method : post<br></p>
   <p>input : {'signupAccount':'your signup email addr','signupPassword':'your password'}<br></p>
   <p>response1 : {'msg':'success','userName':'your name','signupAccount':'your signup email addr'},200  # login success<br></p>
   <p>response2 : {'error':'wrong password'},404 #wrong pw<br></p>
@@ -33,4 +79,4 @@ response: {"msg":"create account success","signupAccount":"jack@test.com","userN
 
 <p>ex:</br>
 curl -iX GET -H "Content-Type:application/json" https://minukutest.nctu.me/minukutest/test@test.com/profile<br>
-response:{"signupAccount":"test@test.com","signupEmail":"test@test.com","signupPassword":"minuku","userName":"armuro","signupTime":"******"}<br><p> 
+response:{"signupAccount":"test@test.com","signupEmail":"test@test.com","signupPassword":"minuku","userName":"armuro","signupTime":"******"}<br><p>

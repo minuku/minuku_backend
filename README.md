@@ -1,11 +1,11 @@
 # minuku_backend
 **This is minuku backend**
 
-# RESTful Method
+# REST API Documentation
 
 #### URL = https://minukutest.nctu.me/minukutest
 
-##login
+## login
 Login method.
 
   | Title  | mention |
@@ -25,7 +25,7 @@ Login method.
   ```
   * response: ```{"msg":"success","signupAccount":"armuro@test.com","userName":"armuro"}```
 
-##signup
+## signup
 signup method.
 
   | Title  | mention |
@@ -45,7 +45,7 @@ signup method.
   * response: ```{"msg":"create account success","signupAccount":"jack@test.com","userName":"jack"}```
 
 
-##login
+## login
 Login method.
 
   | Title  | mention |

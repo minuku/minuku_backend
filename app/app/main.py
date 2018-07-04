@@ -4,8 +4,8 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 
-client = MongoClient('localhost', 27017)
-db = client.minukudb
+client = MongoClient('db', 27017)
+db = client['minukudb']
 
 from .core import app_setup
 

@@ -7,11 +7,3 @@ from flask import jsonify
 def hello():
     # This could also be returning an index.html
     return '''Welcome to minuku backend, try <a href="/test/">/test/</test>'''
-
-@app.route("/test")
-def route_test():
-    user_data = {
-        'name': 'armuro',
-        'email': 'minuku@gmail.com'
-    }
-    return jsonify(user_data)

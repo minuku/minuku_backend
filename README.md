@@ -9,6 +9,8 @@ Endpoints for minuku project.
 * [Login](#login) : `POST /login`
 * [Signup](#signup) : `POST /signup`
 * [Show User Profile](#user-profile) : `GET /:signupAccount/profile`
+* [Show User Profile](#user-profile) : `GET /profile2`
+
 
 ### login
 Login method.
@@ -18,17 +20,17 @@ Login method.
   | URL  | `/login`  |
   | Method  | **POST** |
   | URL Params | none |
-  | Data Params | **Required:** <br/> `{signupAccount: 'signup@email',signupPassword: 'password'}` |
-  | Success Response  | **Code:** 200 <br /> **Content:** `{ msg:'success', userName:'your name', signupAccount: 'your signup email addr'}` |
+  | Data Params | **Required:** <br/> `{account: 'signup@email',password: 'password'}` |
+  | Success Response  | **Code:** 200 <br /> **Content:** `{ msg:'success', username:'your username', account: 'your signup email addr'}` |
   | Error Response  | **Code:** 404 WRONG PW <br /> **Content:** ` {'error': 'wrong password'}` |
   | Error Response  | **Code:** 404 WRONG ACCOUNT <br /> **Content:** ` {'error': 'no this account'}` |
 
 * **Sample Call:**
 
   ```curl
-  curl -iX POST -H "Content-Type:application/json" -d '{"signupAccount":"armuro@test.com","userName":"armuro","signupPassword":"minuku","signupEmail":"armuro@test.com"}' https://minukutest.nctu.me/minukutest/login
+  curl -iX POST -H "Content-Type:application/json" -d '{"account":"test@test.com","username":"armuro","password":"minuku","email":"test@test.com"}' https://minukutest.nctu.me/minukutest/login
   ```
-  * response: ```{"msg":"success","signupAccount":"armuro@test.com","userName":"armuro"}```
+  * response: ```{"msg":"success","signupAccount":"test@test.com","username":"armuro"}```
 
 ### signup
 signup method.
@@ -38,16 +40,16 @@ signup method.
   | URL  | `/signup`  |
   | Method  | **POST** |
   | URL Params | none |
-  | Data Params | **Required:** <br/> `{'signupAccount':'your email addr','userName':'userName','signupPassword':'passwrod,'signupEmail':'your email addr'}` |
-  | Success Response  | **Code:** 200 <br /> **Content:** `{ msg:'create account success', 'userName':'userNamee','signupAccount':'your signup email addr'}` |
+  | Data Params | **Required:** <br/> `{'account':'your email addr','username':'username','password':'passwrod,'email':'your email addr'}` |
+  | Success Response  | **Code:** 200 <br /> **Content:** `{ msg:'create account success', 'username':'username','account':'your signup email addr'}` |
   | Error Response  | **Code:** 404 DUPLICATE ACCOUNT <br /> **Content:** ` {'error': 'this account already used'}` |
 
 * **Sample Call:**
 
   ```curl
-  curl -iX POST -H "Content-Type:application/json" -d '{"signupAccount":"jack@test.com","userName":"jack","signupPassword":"123","signupEmail":"jack@test.com"}' https://minukutest.nctu.me/minukutest/signup
+  curl -iX POST -H "Content-Type:application/json" -d '{"account":"jack@test.com","username":"jack","password":"123","email":"jack@test.com"}' https://minukutest.nctu.me/minukutest/signup
   ```
-  * response: ```{"msg":"create account success","signupAccount":"jack@test.com","userName":"jack"}```
+  * response: ```{"msg":"create account success","account":"jack@test.com","username":"jack"}```
 
 
 ### User Profile
@@ -55,15 +57,39 @@ Return json data about uesr porfile.
 
   | Title  | mention |
   | ------------- | ------------- |
-  | URL  | `/<string:signupAccount>/profile`  |
+  | URL  | `/<string:account>/profile`  |
   | Method  | **GET** |
-  | URL Params | **Required:** <br/> `signupAccount=[string]` |
+  | URL Params | **Required:** <br/> `account=[string]` |
   | Data Params | none |
-  | Success Response  | **Code:** 200 <br /> **Content:** `{"signupAccount":"your email addr","signupEmail":"your email addr","signupPassword":"your password","userName":"your name","signupTime":"your signuptime"}` |
+  | Success Response  | **Code:** 200 <br /> **Content:** `{"account":"your email addr","email":"your email addr","password":"your password","username":"your name","signupTime":"your signuptime"}` |
 
 * **Sample Call:**
 
   ```curl
   curl -iX GET -H "Content-Type:application/json" https://minukutest.nctu.me/minukutest/test@test.com/profile
   ```
-  * response: ```{"signupAccount":"test@test.com","signupEmail":"test@test.com","signupPassword":"minuku","userName":"armuro","signupTime":"******"}```
+  * response: ```{"account":"test@test.com","email":"test@test.com","password":"minuku","username":"armuro","signupTime":"******"}```
+
+
+### User Profile 
+Return json data about uesr porfile.
+
+  | Title  | mention |
+  | ------------- | ------------- |
+  | URL  | `/profile?account=useraccount`  |
+  | Method  | **GET** |
+  | URL Params | **Required:** <br/> `account=[string]` |
+  | Data Params | none |
+  | Success Response  | **Code:** 200 <br /> **Content:** `{"account":"your email addr","email":"your email addr","password":"your password","username":"your name","signupTime":"your signuptime"}` |
+
+* **Sample Call:**
+
+  ```curl
+  curl -iX GET -H "Content-Type:application/json" https://minukutest.nctu.me/minukutest/profile2?account=test@test.com
+  ```
+  * response: ```{"account":"test@test.com","email":"test@test.com","password":"minuku","username":"armuro","signupTime":"******"}```
+
+
+
+
+

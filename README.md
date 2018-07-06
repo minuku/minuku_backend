@@ -80,7 +80,7 @@ Update username, email and password
   | Method | **PUT** |
   | URL Params | None |
   | Query Component | **Required:** <br/> `?account=[string]` |
-  | Data Params | {'username':'new username','password':'new password','email':'new email'} |
+  | Data Params | `{'username':'new username','password':'new password','email':'new email'}` |
   | Success Response | **Code:** 200 <br /> |
 
 * **Sample Call:**
@@ -88,4 +88,4 @@ Update username, email and password
   ```curl 
   curl -iX PUT -H "Content-Type:application/json" -d '{"username":"sara","password":"123456","email":"sara@test.com"}' https://minukutest.nctu.me/minukutest/updateProfile?account=jim@test.com
   ```
-  *response: ```200 ok```
+  * response: ```200 ok```

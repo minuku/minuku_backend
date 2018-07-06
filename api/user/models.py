@@ -15,8 +15,7 @@ class User():
 	def updateProfile(self,data):
 		db.accountCollection.update_one(\
                      {'profile.account':self.account},\
-                     {'$set':{'profile.account':data['account'],\
-                             'profile.username':data['username'],\
+                     {'$set':{'profile.username':data['username'],\
                              'profile.password':data['password'],\
                              'profile.email':data['email'],\
                              'profile.updataTime':time.strftime("%c")}},upsert=True)

@@ -30,7 +30,7 @@ Login method.
   ```curl
   curl -iX POST -H "Content-Type:application/json" -d '{"account":"test@test.com","username":"armuro","password":"minuku","email":"test@test.com"}' https://minukutest.nctu.me/minukutest/login
   ```
-  * response: ```{"msg":"success","signupAccount":"test@test.com","username":"armuro"}```
+  * response: ```{"msg":"success","account":"test@test.com","username":"armuro"}```
 
 ### signup
 signup method.
@@ -40,14 +40,14 @@ signup method.
   | URL  | `/signup`  |
   | Method  | **POST** |
   | URL Params | none |
-  | Data Params | **Required:** <br/> `{'account':'your email addr','username':'username','password':'passwrod,'email':'your email addr'}` |
+  | Data Params | **Required:** <br/> `{'account':'your email addr','username':'username','password':'passwrod}` |
   | Success Response  | **Code:** 200 <br /> **Content:** `{ msg:'create account success', 'username':'username','account':'your signup email addr'}` |
   | Error Response  | **Code:** 404 DUPLICATE ACCOUNT <br /> **Content:** ` {'error': 'this account already used'}` |
 
 * **Sample Call:**
 
   ```curl
-  curl -iX POST -H "Content-Type:application/json" -d '{"account":"jack@test.com","username":"jack","password":"123","email":"jack@test.com"}' https://minukutest.nctu.me/minukutest/signup
+  curl -iX POST -H "Content-Type:application/json" -d '{"account":"jack@test.com","username":"jack","password":"123"}' https://minukutest.nctu.me/minukutest/signup
   ```
   * response: ```{"msg":"create account success","account":"jack@test.com","username":"jack"}```
 

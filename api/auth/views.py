@@ -18,7 +18,7 @@ def login():
 def signup():
 	if request.method=='POST':
 		request_message= request.get_json()
-		account = {'account':request_message['account'],'username':request_message['username'],'password':request_message['password'],'email':request_message['email'],'signupTime':time.strftime("%c")}
+		account = {'account':request_message['account'],'username':request_message['username'],'password':request_message['password'],'email':request_message['account'],'signupTime':time.strftime("%c")}
 		for item in db.accountCollection.find():
 			if request_message['account']==item['profile']['account']:
 				return make_response(json.jsonify({'error':'this account already used'}),404)

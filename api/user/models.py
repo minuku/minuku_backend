@@ -19,4 +19,4 @@ class User():
                              'profile.password':data['password'],\
                              'profile.email':data['email'],\
                              'profile.updataTime':time.strftime("%c")}},upsert=True)
-                		
+              		

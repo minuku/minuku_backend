@@ -30,4 +30,4 @@ def updateProfile():
 		account = parse.parse_qs(query_component)['account'][0]
 		user = User(account= account)
 		user.updateProfile(update_data)
-		return make_response("",200)
+		return make_response(user.getProfile(),200)

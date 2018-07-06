@@ -9,7 +9,7 @@ Endpoints for minuku project.
 * [Login](#login) : `POST /login`
 * [Signup](#signup) : `POST /signup`
 * [Show User Profile](#user-profile) : `GET /:signupAccount/profile`
-* [Show User Profile](#user-profile) : `GET /profile2`
+* [Update User Profile](#user-profile) : `PUT /updateProfile`
 
 
 ### login
@@ -52,7 +52,7 @@ signup method.
   * response: ```{"msg":"create account success","account":"jack@test.com","username":"jack"}```
 
 
-### User Profile
+### Get User Profile
 Return json data about uesr porfile.
 
   | Title  | mention |
@@ -60,7 +60,7 @@ Return json data about uesr porfile.
   | URL  | `/<string:account>/profile`  |
   | Method  | **GET** |
   | URL Params | **Required:** <br/> `account=[string]` |
-  | Data Params | none |
+  | Data Params | **Optional:** <br/> `?account=[string]` |
   | Success Response  | **Code:** 200 <br /> **Content:** `{"account":"your email addr","email":"your email addr","password":"your password","username":"your name","signupTime":"your signuptime"}` |
 
 * **Sample Call:**
@@ -71,25 +71,20 @@ Return json data about uesr porfile.
   * response: ```{"account":"test@test.com","email":"test@test.com","password":"minuku","username":"armuro","signupTime":"******"}```
 
 
-### User Profile 
-Return json data about uesr porfile.
-
-  | Title  | mention |
-  | ------------- | ------------- |
-  | URL  | `/profile?account=useraccount`  |
-  | Method  | **GET** |
-  | URL Params | **Required:** <br/> `account=[string]` |
-  | Data Params | none |
-  | Success Response  | **Code:** 200 <br /> **Content:** `{"account":"your email addr","email":"your email addr","password":"your password","username":"your name","signupTime":"your signuptime"}` |
+### Update User Profile
+Update username, email and password
+  | Title | mention |
+  | -------------- | -------------- |
+  | URL | `/updateProfile` |
+  | Method | **PUT** |
+  | URL Params | None |
+  | Query Component | **Required:** <br/> `?account=[string]` |
+  | Data Params | {'username':'new username','password':'new password','email':'new email'} |
+  | Success Response | **Code:** 200 <br /> |
 
 * **Sample Call:**
 
-  ```curl
-  curl -iX GET -H "Content-Type:application/json" https://minukutest.nctu.me/minukutest/profile2?account=test@test.com
+  ```curl 
+  curl -iX PUT -H "Content-Type:application/json" -d '{"username":"sara","password":"123456","email":"sara@test.com"}' https://minukutest.nctu.me/minukutest/updateProfile?account=jim@test.com
   ```
-  * response: ```{"account":"test@test.com","email":"test@test.com","password":"minuku","username":"armuro","signupTime":"******"}```
-
-
-
-
-
+  *response: ```200 ok```

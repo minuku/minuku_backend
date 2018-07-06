@@ -12,6 +12,7 @@ def create_app():
 	app.register_blueprint(auth_blueprint)
 	from .user import user_blueprint
 	app.register_blueprint(user_blueprint)
-	
+	from .user.test import user_testblueprint
+	app.register_blueprint(user_testblueprint)	
 	return app
 

@@ -3,22 +3,31 @@ from . import user_blueprint
 from flask import request,make_response,json
 from urllib import parse
 from bson.json_util import dumps
+from .models import User
 @user_blueprint.route('/<string:account>/profile',methods=['GET'])
 def query_profile(account):
-        if request.method =='GET':
-                data = db.accountCollection.find({'profile.account':account},{'profile':1})
-                return make_response(dumps(data[0]['profile']),200)
+	if request.method =='GET':
+		user = User(account=account)
+		return make_response(user.getProfile(),200)
 
 
-@user_blueprint.route('/profile2',methods=['GET'])
+@user_blueprint.route('/profile',methods=['GET'])
 def query_profile2():
 	if request.method == 'GET':
-                #url = urlrequest.Request.get_full_url()
+		#url = urlrequest.Request.get_full_url()
 		url = request.url
 		query_component = parse.urlparse(url).query
 		account = parse.parse_qs(query_component)['account'][0]
-		
-		data = db.accountCollection.find({'profile.account':account})
-		#data = data[0]['profile']
-		return make_response(dumps(data[0]['profile']),200)
+		user = User(account=account)
+		return make_response(user.getProfile(),200)
 
+@user_blueprint.route('/updateProfile',methods=['POST'])
+def updateProfile():
+	if request.method=='POST':
+		url = request.url
+		update_data = request.get_json()
+		query_component = parse.urlparse(url).query
+		account = parse.parse_qs(query_component)['account'][0]
+		user = User(account= account)
+		user.updateProfile(update_data)
+		return make_response("",200)

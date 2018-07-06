@@ -21,9 +21,9 @@ def query_profile2():
 		user = User(account=account)
 		return make_response(user.getProfile(),200)
 
-@user_blueprint.route('/updateProfile',methods=['POST'])
+@user_blueprint.route('/updateProfile',methods=['POST','PUT'])
 def updateProfile():
-	if request.method=='POST':
+	if request.method=='PUT':
 		url = request.url
 		update_data = request.get_json()
 		query_component = parse.urlparse(url).query

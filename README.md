@@ -73,6 +73,7 @@ Return json data about uesr porfile.
 
 ### Update User Profile
 Update username, email and password
+
   | Title | mention |
   | -------------- | -------------- |
   | URL | `/updateProfile` |

@@ -88,4 +88,4 @@ Update username, email and password
   ```curl 
   curl -iX PUT -H "Content-Type:application/json" -d '{"username":"sara","password":"123456","email":"sara@test.com"}' https://minukutest.nctu.me/minukutest/updateProfile?account=jim@test.com
   ```
-  * response: ```200 ok```
+  * response: ```{"account":"test@test.com","email":"test@test.com","password":"minuku","username":"armuro","signupTime":"******","updateTime":"*******"}```

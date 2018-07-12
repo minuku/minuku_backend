@@ -7,7 +7,7 @@ API Reference_user
 # Get user profile
 
 - ### Http request 
-    <code> GET https://minukutest.nctu.me/minukutest/<em style="color:DeepPink ">user_account</em>/profile </code> 
+    <code> GET https://minukutest.nctu.me/minukutest/<em style="color:DeepPink "><span style="color:DeepPink">user_account</em>/profile </code> 
     <code> GET https://minukutest.nctu.me/minukutest/profile<em style="color:DeepPink ">?user_account=user_account</em> </code>
 
 - ### Path parameter 

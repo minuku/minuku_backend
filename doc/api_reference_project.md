@@ -1,96 +1,9 @@
-API Reference_project
-===
-**URIs relative to <em style='color:red'><code>https://minukutest.nctu.me/minukutest</code></em>,unless otherwise noted.**
-
-
-# Create project
-
-- ### Http request 
-    <code> POST https://minukutest.nctu.me/minukutest/createProject </code> 
-
-- ### Path parameter 
- 
-     <table>
-        <col width="40%">
-        <col width="100%">
-        <col width="30%">
-        <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>None</td>
-                <td></td>
-                <td><b></b></td> 
-            </tr>
-        </tbody>
-      </table>
-
-
-- ### Request body
- 
-     <table>
-        <col width="25%">
-        <col width="15%">
-        <col width="100%">
-        <col width="15%">
-        <thead>
-            <tr>
-                <th>Key</th>
-                <th>Type</th>
-                <th>Value</th>
-                <th>Note</th>
-            </tr>
-            <tr><td colspan="4"><code>{'account':'your email','projectName':'name'}</code></td></tr>
-        </thead>
-            <tr>
-            <td><b>account</b></td>
-                <td>string</td>
-                <td>user account</td>
-                <td></td>
-            </tr>
-            <tr>
-            <td><b>projectName</b></td>
-                <td>string</td>
-                <td>project name</td>
-                <td></td>
-            </tr>
-    </table>
-
-- ### Response message
-
-     <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Code</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>Success message</b></td>
-                <td>200</td>
-                <td><code>{"datacollections": [], "schedules": [], "conditions": [], "projectName": "name", "situations": [], "createTime": "Thu Jul 12 07:22:32 2018"}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td><code>{"error":"project already exist"}</code></td>
-            </tr>
-        </tbody>
-    </table>
-    
 ---
 
-# Delete project
+# Get project
 
 - ### Http request 
-    <code> POST https://minukutest.nctu.me/minukutest/updateProfile/deleteProject</code>
+<code> GET https://minukutest.nctu.me/minukutest/updateProfile/project/<em>projectname</em></code>
 
 - ### Path parameter 
  
@@ -107,9 +20,9 @@ API Reference_project
         </thead>
         <tbody>
             <tr>
-                <td>None</td>
+                <td><em>projectname<em></td>
                 <td></td>
-                <td><b></b></td> 
+                <td>Required</td> 
             </tr>
         </tbody>
       </table>
@@ -129,19 +42,13 @@ API Reference_project
                 <th>Value</th>
                 <th>Note</th>
             </tr>
-            <tr><td colspan="4"><code>{'account':'your email','projectName':'name'}</code></td></tr>
+            <tr><td colspan="4"><code>{'account':'your email'}</code></td></tr>
         </thead>
             <tr>
             <td><b>account</b></td>
                 <td>string</td>
-                <td>user account</td>
                 <td></td>
-            </tr>
-            <tr>
-            <td><b>projectName</b></td>
-                <td>string</td>
-                <td>project name</td>
-                <td></td>
+                <td>Required</td>
             </tr>
     </table>
 
@@ -159,7 +66,7 @@ API Reference_project
             <tr>
             <td><b>Success message</b></td>
                 <td>200</td>
-                <td colspan="4"><code>[{"situations": [], "datacollections": [], "projectName": "minuku", "conditions": [], "createTime": "Wed Jul 11 12:50:11 2018", "schedules": []}, {"situations": [], "datacollections": [], "projectName": "sleep", "conditions": [], "createTime": "Wed Jul 11 12:56:24 2018", "schedules": []}, {"situations": [], "datacollections": [], "projectName": "second", "conditions": [], "createTime": "Thu Jul 12 07:35:41 2018", "schedules": []}]</code></td>
+                <td colspan="4"><code>{"createTime": "Fri Jul 13 05:07:19 2018", "situations": [], "projectName": "name", "lastEditTime": "}</code></td>
             </tr>
             <tr>
             <td><b>Error message</b></td>

@@ -153,7 +153,7 @@ API Reference_project
             <tr>
             <td><b>Success message</b></td>
                 <td>200</td>
-                <td colspan="4"><code></code>{'msg':'project delete success'}</td>
+                <td colspan="4"><code>{'msg':'project delete success'}</code></td>
             </tr>
             <tr>
             <td><b>Error message</b></td>
@@ -320,7 +320,7 @@ API Reference_project
             <tr>
             <td><b>Success message</b></td>
                 <td>200</td>
-                <td colspan="4"><code>{"createTime": "Fri Jul 13 05:07:19 2018", "situations": [], "projectName": "name", "lastEditTime": "}</code></td>
+                <td colspan="4"><code>["project2", "project1"]</code></td>
             </tr>
             <tr>
             <td><b>Error message</b></td>

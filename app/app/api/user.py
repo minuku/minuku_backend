@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, make_response, request, json
 from app.models import User
 from app import db
 import time
+from bson.json_util import dumps
+from werkzeug.security import generate_password_hash, check_password_hash
 
 user = Blueprint('user', __name__)
 
@@ -17,18 +19,17 @@ def test():
 def signup():
     if request.method=='POST':
         request_message= request.get_json()
-        account = {
+        user = {
             'account': request_message['account'],
             'username': request_message['username'],
-            'password': request_message['password'],
+            'password': generate_password_hash(request_message['password']),
             'email': request_message['account'],
             'signupTime': time.strftime("%c")
         }
-        for item in db.UserCollection.find():
-            if request_message['account']==item['profile']['account']:
-                return make_response(json.jsonify({'error':'this account already used'}), 404)
-        db.UserCollection.insert_one({'profile': account})
-        return make_response(json.jsonify({'msg':'create account success', 'username':request_message['username'], 'account':request_message['account']}), 200)
+        if db.UserCollection.find_one({'account': request_message['account']}):
+            return make_response(json.jsonify({'error':'this account already used'}), 404)
+        db.UserCollection.insert(user)
+        return make_response(json.jsonify({'msg':'create account success'}), 200)
 
 @user.route('/profile/<string:account>', methods=['GET'])
 def profile(account):

@@ -62,7 +62,7 @@ class Condition():
 				else: return 'condition already exist'
 				projectArray[projectIndex] = project
 				db.accountCollection.update({'profile.account':self.projectOwner},{'$set':{'projects':projectArray}})		
-				return dumps(conditionArray)
+				return dumps(self.condition_schema)
 	
 	def deleteCondition(self):
 		obj = db.accountCollection.find({'profile.account':self.projectOwner},{'projects':1})

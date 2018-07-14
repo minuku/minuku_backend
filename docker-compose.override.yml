@@ -6,13 +6,18 @@ services:
     ports:
       - "80:80"
     environment:
-      - FLASK_APP=app/main.py
+      - FLASK_APP=main.py
       - FLASK_DEBUG=1
       - 'RUN=flask run --host=127.0.0.1 --port=80'
-
+    command:
+      flask run --host=0.0.0.0 --port=80
     depends_on:
       - db
   db:
     image: mongo:3.6
     ports:
       - "27017:27017"
+
+# run those command to setup:
+# docker-compose build
+# docker-compose up

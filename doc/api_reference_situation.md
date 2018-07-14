@@ -117,7 +117,7 @@ API Reference_situation
         </thead>
         <tbody>
             <tr>
-            <td><em>projectname</em>em></td>
+            <td><em>projectname</em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>

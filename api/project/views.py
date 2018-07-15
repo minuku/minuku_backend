@@ -7,7 +7,7 @@ from bson.json_util import dumps
 from .models import Project
 
 @project_blueprint.route('/project',methods=['POST'])
-def create_project():
+def createProject():
 	obj = request.get_json()
 	project = Project(projectName=obj['projectName'],projectOwner=obj['account'])
 	result = project.createProject()
@@ -18,7 +18,7 @@ def create_project():
 
 
 @project_blueprint.route('/project',methods=['GET'])
-def get_all_projects():
+def getAllProjects():
 	obj = request.get_json()
 	result = Project.getAllProjects(obj['account'])
 	if result in list(responseMsg.project_Error.values()):
@@ -36,7 +36,7 @@ def deleteProject(projectName):
 	else:
 		return make_response(json.jsonify({'msg':result}),200)
 @project_blueprint.route('/project/<string:projectName>',methods=['GET'])
-def get_project(projectName):
+def getProject(projectName):
 	obj = request.get_json()
 	project = Project(projectName=projectName,projectOwner=obj['account'])
 	result = project.getProject()

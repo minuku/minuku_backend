@@ -1,11 +1,12 @@
 import sys
 sys.path.append('~/minuku/api')
 
+from api.returnMsg import responseMsg
 from api import db
 import time
 from bson.json_util import dumps
 from ..models import Project
-
+from ..situation.models import Situation
 
 rules=['transpotation',
        'accelerometer',
@@ -26,85 +27,78 @@ rules=['transpotation',
        ]
  
 class Condition():
-	def __init__(self,projectOwner=None,projectName=None,conditionName=None):
+	def __init__(self,projectOwner=None,projectName=None,conditionName=None,situationName=None):
 		self.projectOwner = projectOwner
 		self.projectName = projectName
 		self.conditionName = conditionName
-		self.condition_schema = {'conditionName':conditionName,
-                    'timeStart':'',
-                    'timeEnd':'',
-                    'timeLasting':'',
-                    'timeLasting_unit':'',
-                    'rules':rules
+		self.situationName = situationName
+		self.condition_schema = {
+                                         'conditionName':conditionName,
+                                         'timeStart':'',
+                                         'timeEnd':'',
+                                         'timeLasting':'',
+                                         'timeLasting_unit':'',
+                                         'rules':rules,
+                                         'createTime':'',
+                                         'lastEditTime':''
                    }
 
 	def createCondition(self):
-		obj = db.accountCollection.find({'profile.account':self.projectOwner},{'projects':1})
-		projectArray = obj[0]['projects']
-		if(len(projectArray)==0):
-			return 'projectArray empty'
-		#if (Project.isProjectsEmpty(self.projectOwner)):
-		#	return 'projects is empty'
-		else:
-			if not Project.isProjectExist(projectArray,self.projectName):
-				return 'project Not exist'
-			else:
-				i = -1
-				projectIndex = 0
-				projectIndex = Project.getProjectIndex(projectArray,self.projectName)
-				if projectIndex != -1:
-					project = projectArray[projectIndex]
-				else: return 'project Not exist'
-				conditionArray = project['conditions']
-				if not Condition.isConditionExist(conditionArray,self.conditionName):
-					project['conditions'].append(self.condition_schema)
-					conditionArray = project['conditions']
-				else: return 'condition already exist'
-				projectArray[projectIndex] = project
-				db.accountCollection.update({'profile.account':self.projectOwner},{'$set':{'projects':projectArray}})		
-				return dumps(self.condition_schema)
-	
+		result = Condition.verifyCondition(projectOwner = self.projectOwner,projectName = self.projectName,situationName = self.situationName,conditionName=self.conditionName)
+		if(type(result) is not list):
+			return result
+		if(type(result) is list and len(result)==3):
+			return responseMsg.condition_Error['msg2']
+		if(type(result) is list and len(result)==1):
+			return responseMsg.situation_Error['msg3']
+		if(type(result) is list and len(result)==2):
+			path = 'projects.'+str(result[0])+'.situations.'+str(result[1])+'.conditions'
+			self.condition_schema['createTime']= time.strftime("%c")
+			db.accountCollection.update({'profile.account':self.projectOwner},{'$push':{path:self.condition_schema}})
+			return responseMsg.condition['msg1']
+
 	def deleteCondition(self):
-		obj = db.accountCollection.find({'profile.account':self.projectOwner},{'projects':1})
-		projectArray =  obj[0]['projects']
-		if(len(projectArray)==0):
-			return 'projectArray empty'
-		if not Project.isProjectExist(projectArray,self.projectName):
-			return 'project Not exist'
-		else:
-			i = -1
-			projectIndex = Project.getProjectIndex(projectArray,self.projectName)
-			if projectIndex != -1:
-				project = projectArray[projectIndex]
-			else: return 'project Not exist'
-			conditionArray = project['conditions']
-			if(len(conditionArray)==0): return 'conditionArray empty' 
-			if Condition.isConditionExist(conditionArray,self.conditionName):
-				conditionIndex = Condition.getConditionIndex(conditionArray,self.conditionName)
-				del conditionArray[conditionIndex]
-				project['conditions'] = conditionArray
-				projectArray[projectIndex] = project
-				db.accountCollection.update({'profile.account':'jim@test.com'},{'$set':{'projects':projectArray}})
-				return dumps(conditionArray)
-			else: return 'condition Not exist'
+		result = Condition.verifyCondition(projectOwner = self.projectOwner,projectName = self.projectName,situationName = self.situationName,conditionName=self.conditionName)
+		if(type(result) is not list):
+			return result
+		if(type(result)is list and len(result)==1):
+			return responseMsg.situation_Error['msg3'] #means situation must not exist, but unsure situation array is empty 
+		if(type(result)is list and len(result)==2): #means condition must not exist, but unsure condition array is empty
+			return responseMsg.condition_Error['msg3']
+		if(type(result)is list and len(result)==3): # means condition is exist
+			path1 = 'projects.'+str(result[0])+'.situations.'+str(result[1])+'.conditions.'+str(result[2])
+			path2 = 'projects.'+str(result[0])+'.situations.'+str(result[1])+'.conditions'
+			db.accountCollection.update({'profile.account':self.projectOwner},{'$unset':{path1:'null'}})
+			db.accountCollection.update({'profile.account':self.projectOwner},{'$pull':{path2:None}})
+			return responseMsg.condition['msg2']
+
 	def getCondition(self):
-		obj = db.accountCollection.find({'profile.account':self.projectOwner},{'projects':1})
-		projectArray =  obj[0]['projects']
-		#assume project and condition must exist
-		projectIndex = Project.getProjectIndex(projectArray,self.projectName)
-		project = projectArray[projectIndex]
-		conditionArray = project['conditions']
-		if(Condition.isConditionExist(conditionArray,self.conditionName)):
-			conditionIndex = Condition.getConditionIndex(conditionArray,self.conditionName)
-			condition = conditionArray[conditionIndex]
+		result = Condition.verifyCondition(projectOwner=self.projectOwner,projectName = self.projectName,situationName=self.situationName,conditionName = self.conditionName)
+		if(type(result) is not list ):
+			return result
+		if(type(result)is list and len(result)==1):
+			return responseMsg.situation_Error['msg3']
+		if(type(result)is list and len(result)==2):
+			return responseMsg.condition_Error['msg3']	
+		if(type(result)is list and len(result)==3):
+			condition = db.accountCollection.find({'profile.account':self.projectOwner},{'projects':1})[0]['projects'][result[0]]['situations'][result[1]]['conditions'][result[2]]
 			return dumps(condition)
-		else: return 'condition Not exist'
-	#def editCondition(self):
+	@staticmethod
+	def getAllConditions(projectOwner,projectName,situationName):
+		result = Condition.verifyCondition(projectOwner = projectOwner,projectName=projectName,situationName=situationName)
+		if(type(result)is list):
+			if(type(result[0]) is int):
+				return responseMsg.condition_Error['msg1']
+			else:
+				conditionList = []
+				for item in result:
+					conditionList.append(item['conditionName'])
+				return dumps(conditionList)
 		
 	@staticmethod
 	def isConditionExist(conditionArray,conditionName):
 		for item in conditionArray:
-			if conditionName==item['conditionName']:
+			if (conditionName==item['conditionName']):
 				return True
 		return False
 	@staticmethod
@@ -115,7 +109,26 @@ class Condition():
 			if conditionName==item['conditionName']:
 				return i
 		return -1
-		
-	#def getConditions():
-	#def editCondition():
-	#def deleteCondition():
+	@staticmethod
+	def verifyCondition(projectArray=None,projectOwner=None,projectName=None,situationName=None,conditionName=None):
+		if(projectArray is None):
+			obj = db.accountCollection.find({'profile.account':projectOwner},{'projects':1})
+			projectArray = obj[0]['projects']
+		else: projectArray = projectArray
+		result = Situation.verifySituation(projectArray=projectArray,projectOwner=projectOwner,projectName=projectName,situationName=situationName)
+		returnList = []
+		if(type(result) is list):
+			if(len(result)==1): return responseMsg.situation_Error['msg3']
+			returnList.extend(result)
+			conditionArray = projectArray[returnList[0]]['situations'][returnList[1]]['conditions']
+			if(len(conditionArray)==0): return returnList 
+			else:
+				if conditionName is None:
+					return conditionArray
+				else: 
+					if not Condition.isConditionExist(conditionArray,conditionName): return returnList
+					else:
+						conditionIndex = Condition.getConditionIndex(conditionArray,conditionName)
+						returnList.append(conditionIndex)
+						return returnList
+		else: return result

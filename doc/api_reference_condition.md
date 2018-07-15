@@ -50,6 +50,7 @@ API Reference_condition
      
 - ### Request body
      `{'account':'your email'}`
+
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
     |<b>account</b> | string | user account | Required |
@@ -79,6 +80,7 @@ API Reference_condition
      
 - ### Request body
      `{'account':'your email'}`
+
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
     |<b>account</b> | string | user account | Required |
@@ -107,6 +109,7 @@ API Reference_condition
     
 - ### Request body
     `{'account':'your email'}`
+
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
     |<b>account</b> | string | user account | Required |

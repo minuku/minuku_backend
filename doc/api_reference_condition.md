@@ -69,7 +69,7 @@ API Reference_condition
 # Get condition
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition/<em><b>conditionname</b></em></code>
+<code> GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition/<em><b>conditionname</b></em></code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
@@ -99,7 +99,7 @@ API Reference_condition
 # Get all conditions
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition</code>
+<code> GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |

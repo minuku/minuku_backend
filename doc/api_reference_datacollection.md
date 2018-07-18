@@ -61,7 +61,7 @@ API Reference_datacollection
     |----------|:------------:|:------:|
     |<b>Success message</b> | 200 | `{"msg":"datacollection delete success"}` |
     |<b>Error message</b> | 404 | `{"error":"datacollectionArray empty"}` |
-    |<b>Error message</b> | 404 | `{"error":"datacollection already exist"}` |
+    |<b>Error message</b> | 404 | `{"error":"datacollection Not exist"}` |
 
 
 ---
@@ -91,7 +91,7 @@ API Reference_datacollection
     |----------|------------|------|
     |<b>Success message</b> | 200 | `{"createTime": "Sun Jul 15 11:16:51 2018", "datacollectionType": "datacollection", "lastEdittime": "", "devices": [], "datacollectionName": "datacollection1"}` |
     |<b>Error message</b> | 404 | `{"error":"datacollectionArray empty"}` |
-    |<b>Error message</b> | 404 | `{"error":"datacollection already exist"}` |
+    |<b>Error message</b> | 404 | `{"error":"datacollection Not exist"}` |
 
     
 ---
@@ -120,4 +120,3 @@ API Reference_datacollection
     |----------|:------------:|:------:|
     |<b>Success message</b> | 200 | `["datacollection2", "datacollection1"]` |
     |<b>Error message</b> | 404 | `{"error":"datacollectionArray empty"}` |
-    |<b>Error message</b> | 404 | `{"error":"datacollection already exist"}` |

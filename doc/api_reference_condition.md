@@ -61,7 +61,7 @@ API Reference_condition
     |----------|:------------:|:------:|
     |<b>Success message</b> | 200 | `{"msg":"condition delete success"}` |
     |<b>Error message</b> | 404 | `{"error":"conditionArray empty"}` |
-    |<b>Error message</b> | 404 | `{"error":"condition already exist"}` |
+    |<b>Error message</b> | 404 | `{"error":"condition Not exist"}` |
 
 
 ---
@@ -91,7 +91,7 @@ API Reference_condition
     |----------|:------------:|:------:|
     |<b>Success message</b> | 200 | `{"timeLasting_unit": "", "createTime": "Sat Jul 14 15:27:01 2018", "rules": ["transpotation", "accelerometer", "rotation", "gravity", "gyroscope", "light", "magnetic", "pressure", "proximity", "temperature", "humidity", "appUsage", "ringer", "battery", "telephony", "connectivity"], "lastEditTime": "", "timeEnd": "", "timeStart": "", "timeLasting": "", "conditionName": "condition1"}` |
     |<b>Error message</b> | 404 | `{"error":"conditionArray empty"}` |
-    |<b>Error message</b> | 404 | `{"error":"condition already exist"}` |
+    |<b>Error message</b> | 404 | `{"error":"condition Not exist"}` |
 
     
 ---
@@ -120,4 +120,3 @@ API Reference_condition
     |----------|:------------:|:------:|
     |<b>Success message</b> | 200 | `["condition2", "condition1"]` |
     |<b>Error message</b> | 404 | `{"error":"conditionArray empty"}` |
-    |<b>Error message</b> | 404 | `{"error":"condition already exist"}` |

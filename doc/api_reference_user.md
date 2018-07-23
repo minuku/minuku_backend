@@ -73,6 +73,16 @@ API Reference_user
                 <td>200</td>
                 <td><code>{"account":"your email addr","email":"your email addr","password":"your password","username":"your name","signupTime":"your signuptime"}</code></td>
             </tr>
+			<tr>
+				<td><b>Error message</b></td>
+                <td>404</td>
+                <td>token expired, please login again</td>
+            </tr>
+			<tr>
+			<td><b>Error message</b></td>
+                <td>404</td>
+                <td>token error, please login again</td>
+            </tr>	
         </tbody>
     </table>
     
@@ -159,6 +169,16 @@ API Reference_user
             <td><b>Success message</b></td>
                 <td>200</td>
                 <td>update profile success</td>
+            </tr>
+			<tr>
+				<td><b>Error message</b></td>
+                <td>404</td>
+                <td>token expired, please login again</td>
+            </tr>
+			<tr>
+			<td><b>Error message</b></td>
+                <td>404</td>
+                <td>token error, please login again</td>
             </tr>
         </tbody>
     </table>

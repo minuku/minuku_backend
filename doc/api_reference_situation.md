@@ -6,7 +6,7 @@ API Reference_situation
 # Create situation
 
 - ### Http request 
-<code> POST https://minukutest.nctu.me/minukutest/<em>projectname</em>/situation </code> 
+<code> POST https://minukutest.nctu.me/minukutest/<em><b>projectname</b></em>/situation </code> 
 
 - ### Path parameter 
  
@@ -23,7 +23,7 @@ API Reference_situation
         </thead>
         <tbody>
             <tr>
-            <td><em>projectname</em></td>
+            <td><em><b>projectname</b></em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -100,7 +100,7 @@ API Reference_situation
 # Delete situation
 
 - ### Http request 
-<code> DELETE https://minukutest.nctu.me/minukutest/project/<em>projectname</em>/situation/<em>situationname</em></code>
+<code> DELETE https://minukutest.nctu.me/minukutest/project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em></code>
 
 - ### Path parameter 
  
@@ -117,12 +117,12 @@ API Reference_situation
         </thead>
         <tbody>
             <tr>
-            <td><em>projectname</em></td>
+            <td><em><b>projectname</b></em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
             <tr>
-                <td><em>situationname<em></td>
+            <td><em><b>situationname</b><em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -199,7 +199,7 @@ API Reference_situation
 # Get situation
 
 - ### Http request 
-<code> GET https://minukutest.nctu.me/minukutest/project/<em>projectname</em>/situation/<em>situationname</em></code>
+<code> GET https://minukutest.nctu.me/minukutest/project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>?<em><b>acocunt</b></em>=youraccount</code>
 
 - ### Path parameter 
  
@@ -216,12 +216,17 @@ API Reference_situation
         </thead>
         <tbody>
             <tr>
-            <td><em>projectname</em></td>
+            <td><em><b>projectname</b></em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
             <tr>
-            <td><em>situationname</em></td>
+            <td><em><b>situationname</b></em></td>
+                <td></td>
+                <td>Required</td> 
+            </tr>
+            <tr>
+            <td><em><b>acocunt</b></em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -243,13 +248,13 @@ API Reference_situation
                 <th>Value</th>
                 <th>Note</th>
             </tr>
-            <tr><td colspan="4"><code>{'account':'your email'}</code></td></tr>
+            
         </thead>
             <tr>
-            <td><b>account</b></td>
-                <td>string</td>
+            <td><b>none</b></td>
                 <td></td>
-                <td>Required</td>
+                <td></td>
+                <td></td>
             </tr>
     </table>
 
@@ -297,7 +302,7 @@ API Reference_situation
 # Get all situations
 
 - ### Http request 
-<code> GET https://minukutest.nctu.me/minukutest/project/<em>projectname</em>/situation</code>
+<code> GET https://minukutest.nctu.me/minukutest/project/<em><b>projectname</b></em>/situation?<em><b>acocunt</b></em>=youraccount</code>
 
 - ### Path parameter 
  
@@ -314,7 +319,12 @@ API Reference_situation
         </thead>
         <tbody>
             <tr>
-            <td><em>projectname</em></td>
+            <td><em><b>projectname</b></em></td>
+                <td></td>
+                <td>Required</td> 
+            </tr>
+            <tr>
+            <td><em><b>acocunt</b></em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -336,13 +346,12 @@ API Reference_situation
                 <th>Value</th>
                 <th>Note</th>
             </tr>
-            <tr><td colspan="4"><code>{'account':'your email'}</code></td></tr>
         </thead>
             <tr>
-            <td><b>account</b></td>
-                <td>string</td>
+            <td><b>none</b></td>
                 <td></td>
-                <td>Required</td>
+                <td></td>
+                <td></td>
             </tr>
     </table>
 

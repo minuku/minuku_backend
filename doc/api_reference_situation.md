@@ -247,8 +247,7 @@ API Reference_situation
                 <th>Type</th>
                 <th>Value</th>
                 <th>Note</th>
-            </tr>
-            
+            </tr>            
         </thead>
             <tr>
             <td><b>none</b></td>

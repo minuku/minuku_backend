@@ -36,8 +36,13 @@ def deleteCondition(projectName,situationName,conditionName):
 
 @condition_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/condition/<string:conditionName>',methods=['GET'])
 def getCondition(projectName,situationName,conditionName):
-	obj = request.get_json()
-	condition = Condition(projectOwner = obj['account'],projectName = projectName,situationName=situationName, conditionName=conditionName)
+	try:
+		obj = request.get_json()
+		account = obj['account']
+	except TypeError:
+		url = request.url
+		account = parse.parse_qs(parse.urlparse(url).query)['account'][0]
+	condition = Condition(projectOwner = account,projectName = projectName,situationName=situationName, conditionName=conditionName)
 	result = condition.getCondition()
 	if result in list(responseMsg.situation_Error.values()):
 		return make_response(json.jsonify({'error':result}),404)
@@ -49,8 +54,13 @@ def getCondition(projectName,situationName,conditionName):
 
 @condition_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/condition',methods=['GET'])
 def getAllConditions(projectName,situationName):
-	obj = request.get_json()
-	result = Condition.getAllConditions(projectOwner=obj['account'],projectName = projectName,situationName = situationName)
+	try:
+		obj = request.get_json()
+		account = obj['account']
+	except TypeError:
+		url = request.url
+		account = parse.parse_qs(parse.urlparse(url).query)['account'][0]
+	result = Condition.getAllConditions(projectOwner=account,projectName = projectName,situationName = situationName)
 	if result in list(responseMsg.situation_Error.values()):
 		return make_response(json.jsonify({'error':result}),404)
 	if result in list(responseMsg.project_Error.values()):

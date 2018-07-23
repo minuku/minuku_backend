@@ -45,8 +45,13 @@ def deleteDatacollection(projectName,situationName,datacollectionName):
 
 @datacollection_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/datacollection/<string:datacollectionName>',methods=['GET'])
 def getDatacollection(projectName,situationName,datacollectionName):
-	obj = request.get_json()
-	datacollection = Datacollection(projectOwner = obj['account'],
+	try:
+		obj = request.get_json()
+		account = obj['account']
+	except TypeError:
+		url = request.url
+		account = parse.parse_qs(parse.urlparse(url).query)['account'][0]
+	datacollection = Datacollection(projectOwner = account,
                                         projectName = projectName,
                                         situationName = situationName,
                                         datacollectionName=datacollectionName
@@ -62,8 +67,13 @@ def getDatacollection(projectName,situationName,datacollectionName):
 
 @datacollection_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/datacollection',methods=['GET'])
 def getAllDatacollections(projectName,situationName):
-	obj = request.get_json()
-	result = Datacollection.getAllDatacollections(projectOwner =obj['account'],
+	try:
+		obj = request.get_json()
+		account = obj['account']
+	except TypeError:
+		url = request.url
+		account = parse.parse_qs(parse.urlparse(url).query)['account'][0]
+	result = Datacollection.getAllDatacollections(projectOwner =account,
                                                       projectName = projectName,
                                                       situationName = situationName
                                                      )

@@ -1,2 +1,7 @@
 database/
 api/user/test/
+test.py
+views_test.py
+*.swp
+__pycache__/
+*.pyc

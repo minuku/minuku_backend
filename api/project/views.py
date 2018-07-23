@@ -19,8 +19,8 @@ def createProject():
 
 @project_blueprint.route('/project',methods=['GET'])
 def getAllProjects():
-	obj = request.get_json()
-	result = Project.getAllProjects(obj['account'])
+	account = parse.parse_qs(parse.urlparse(request.url).query)['account'][0]
+	result = Project.getAllProjects(account)
 	if result in list(responseMsg.project_Error.values()):
 		return make_response(json.jsonify({'error':result}),404)
 	else:
@@ -37,8 +37,8 @@ def deleteProject(projectName):
 		return make_response(json.jsonify({'msg':result}),200)
 @project_blueprint.route('/project/<string:projectName>',methods=['GET'])
 def getProject(projectName):
-	obj = request.get_json()
-	project = Project(projectName=projectName,projectOwner=obj['account'])
+	account = parse.parse_qs(parse.urlparse(request.url).query)['account'][0]
+	project = Project(projectOwner = account,projectName = projectName)
 	result = project.getProject()
 	if result in list(responseMsg.project_Error.values()):
 		return make_response(json.jsonify({'error':result}),404)

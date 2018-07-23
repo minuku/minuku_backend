@@ -32,8 +32,13 @@ def deletesituation(projectName,situationName):
 
 @situation_blueprint.route('/project/<string:projectName>/situation',methods=['GET'])
 def getAllSituations(projectName):
-	obj = request.get_json()
-	result = Situation.getAllSituations(obj['account'],projectName)
+	try:
+		obj = request.get_json()
+		account = obj['account']
+	except TypeError:
+		url = request.url
+		account = parse.parse_qs(parse.urlparse(url).query)['account'][0]
+	result = Situation.getAllSituations(account,projectName)
 	if result in list(responseMsg.situation_Error.values()):
 		return make_response(json.jsonify({'error':result}),404)
 	if result in list(responseMsg.project_Error.values()):
@@ -42,8 +47,13 @@ def getAllSituations(projectName):
 		return make_response(result,200)
 @situation_blueprint.route('/project/<string:projectName>/situation/<string:situationName>',methods=['GET'])
 def getSituation(projectName,situationName):
-	obj = request.get_json()
-	situation = Situation(projectName=projectName,projectOwner= obj['account'],situationName=situationName)
+	try:
+		obj = request.get_json()
+		account = obj['account']
+	except TypeError:
+		url = request.url
+		account = parse.parse_qs(parse.urlparse(url).query)['account'][0]
+	situation = Situation(projectName=projectName,projectOwner=account,situationName=situationName)
 	result = situation.getSituation()
 	if result in list(responseMsg.situation_Error.values()):
 		return make_response(json.jsonify({'error':result}),404)

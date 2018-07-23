@@ -53,6 +53,6 @@ def signup():
                    'sub':request_message['account']
                   }
 		auth_token = authenticate(payload)
-		return make_response(dumps({'token':auth_token}),200)	
+		return make_response(auth_token,200)	
 		#return make_response(json.jsonify({'msg':'create account success','username':request_message['username'],'account':request_message['account']}),200)
 

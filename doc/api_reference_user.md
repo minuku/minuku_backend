@@ -8,7 +8,7 @@ API Reference_user
 # Get user profile
 
 - ### Http request  
-<code> GET /profile?<em><b>account</b></em>=youraccount </code>
+<code> GET /profile?<em><b>token</b></em>=token </code>
 
 - ### Path parameter 
  
@@ -25,9 +25,9 @@ API Reference_user
         </thead>
         <tbody>
             <tr>
-            <td><em><b>account</b></em></td>
-                <td>string</td>
-                <td><b></b></td> 
+            <td><em><b>token</b></em></td>
+                <td>contain account inside</td>
+                <td></td> 
             </tr>
         </tbody>
       </table>
@@ -47,8 +47,14 @@ API Reference_user
                 <th>Value</th>
                 <th>Note</th>
             </tr>
-            <tr><td colspan="4">None</td></tr>
         </thead>
+		<tbody>
+			<tr><td>None</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
     </table>
 
 - ### Response message
@@ -75,7 +81,7 @@ API Reference_user
 # Update user profile
 
 - ### Http request 
-<code> PUT /updateProfile?<em><b>account</b></em>=youraccount</code>
+<code> PUT /profile?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
  
@@ -92,9 +98,9 @@ API Reference_user
         </thead>
         <tbody>
             <tr>
-            <td><em><b>account</b></em></td>
-                <td>string</td>
-                <td><b></b></td> 
+            <td><em><b>token</b></em></td>
+                <td>contain account inside</td>
+                <td></td> 
             </tr>
         </tbody>
       </table>
@@ -152,7 +158,7 @@ API Reference_user
             <tr>
             <td><b>Success message</b></td>
                 <td>200</td>
-                <td colspan="4"><code>{"account":"test@test.com","email":"test@test.com","password":"minuku","username":"armuro","signupTime":"******","updateTime":"*******"}</code></td>
+                <td>update profile success</td>
             </tr>
         </tbody>
     </table>

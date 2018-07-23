@@ -1,4 +1,4 @@
-API Reference_project
+PI Reference_project
 ===
 **URIs relative to <em style='color:red'><code>https://minukutest.nctu.me/minukutest</code></em>,unless otherwise noted.**
 
@@ -174,7 +174,7 @@ API Reference_project
 # Get project
 
 - ### Http request 
-<code> GET https://minukutest.nctu.me/minukutest/project/<em>projectname</em></code>
+<code> GET https://minukutest.nctu.me/minukutest/project/<em><b>projectname</b></em>/?<em><b>account</b></em>=youraccount</code>
 
 - ### Path parameter 
  
@@ -192,6 +192,11 @@ API Reference_project
         <tbody>
             <tr>
                 <td><em>projectname<em></td>
+                <td></td>
+                <td>Required</td> 
+            </tr>
+            <tr>
+                <td><em>account<em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -213,13 +218,12 @@ API Reference_project
                 <th>Value</th>
                 <th>Note</th>
             </tr>
-            <tr><td colspan="4"><code>{'account':'your email'}</code></td></tr>
         </thead>
             <tr>
-            <td><b>account</b></td>
-                <td>string</td>
+            <td><b>none</b></td>
                 <td></td>
-                <td>Required</td>
+                <td></td>
+                <td></td>
             </tr>
     </table>
 
@@ -257,7 +261,7 @@ API Reference_project
 # Get all projects
 
 - ### Http request 
-<code> GET https://minukutest.nctu.me/minukutest/project</code>
+<code> GET https://minukutest.nctu.me/minukutest/project/?<em><b>account</b></em>=youraccount</code>
 
 - ### Path parameter 
  
@@ -274,9 +278,9 @@ API Reference_project
         </thead>
         <tbody>
             <tr>
-                <td>None</td>
+                <td><em>account<em></td>
                 <td></td>
-                <td></td> 
+                <td>Required</td> 
             </tr>
         </tbody>
       </table>
@@ -296,13 +300,12 @@ API Reference_project
                 <th>Value</th>
                 <th>Note</th>
             </tr>
-            <tr><td colspan="4"><code>{'account':'your email'}</code></td></tr>
         </thead>
             <tr>
-            <td><b>account</b></td>
-                <td>string</td>
+            <td><b>none/b></td>
                 <td></td>
-                <td>Required</td>
+                <td></td>
+                <td></td>
             </tr>
     </table>
 

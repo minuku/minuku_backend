@@ -3,7 +3,9 @@ from flask_cors import CORS
 from pymongo import MongoClient
 
 app = Flask(__name__)
+app.secret_key = 'super secret string'  # Change this!
 CORS(app)
+
 db = MongoClient('db', 27017)['minukudb']
 
 # api

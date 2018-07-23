@@ -1,4 +1,6 @@
 bson
 flask
 flask_cors
+flask_login
+pyjwt
 pymongo

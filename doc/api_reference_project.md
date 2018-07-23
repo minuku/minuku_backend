@@ -1,4 +1,4 @@
-PI Reference_project
+API Reference_project
 ===
 **URIs relative to <em style='color:red'><code>https://minukutest.nctu.me/minukutest</code></em>,unless otherwise noted.**
 
@@ -6,7 +6,7 @@ PI Reference_project
 # Create project
 
 - ### Http request 
-    <code> POST https://minukutest.nctu.me/minukutest/project </code> 
+    <code> POST /project </code> 
 
 - ### Path parameter 
  
@@ -23,7 +23,7 @@ PI Reference_project
         </thead>
         <tbody>
             <tr>
-                <td><b>None</b></td>
+            <td><b>None</b></td>
                 <td></td>
                 <td><b></b></td> 
             </tr>
@@ -90,7 +90,7 @@ PI Reference_project
 # Delete project
 
 - ### Http request 
-<code> DELETE https://minukutest.nctu.me/minukutest/project/<em><b>projectname</b></em></code>
+<code> DELETE /project/<em><b>projectname</b></em></code>
 
 - ### Path parameter 
  
@@ -107,7 +107,7 @@ PI Reference_project
         </thead>
         <tbody>
             <tr>
-                <td><em><b>projectname</b><em></td>
+            <td><em><b>projectname</b><em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -174,7 +174,7 @@ PI Reference_project
 # Get project
 
 - ### Http request 
-<code> GET https://minukutest.nctu.me/minukutest/project/<em><b>projectname</b></em>/?<em><b>account</b></em>=youraccount</code>
+<code> GET /project/<em><b>projectname</b></em>/?<em><b>account</b></em>=youraccount</code>
 
 - ### Path parameter 
  
@@ -191,12 +191,12 @@ PI Reference_project
         </thead>
         <tbody>
             <tr>
-                <td><em><b>projectname</b><em></td>
+            <td><em><b>projectname</b><em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
             <tr>
-                <td><em><b>account</b><em></td>
+            <td><em><b>account</b><em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -220,7 +220,7 @@ PI Reference_project
             </tr>
         </thead>
             <tr>
-            <td><b>none</b></td>
+            <td><b>None</b></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -261,7 +261,7 @@ PI Reference_project
 # Get all projects
 
 - ### Http request 
-<code> GET https://minukutest.nctu.me/minukutest/project/?<em><b>account</b></em>=youraccount</code>
+<code> GET /project/?<em><b>account</b></em>=youraccount</code>
 
 - ### Path parameter 
  
@@ -278,7 +278,7 @@ PI Reference_project
         </thead>
         <tbody>
             <tr>
-                <td><em><b>account</b><em></td>
+            <td><em><b>account</b><em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -302,7 +302,7 @@ PI Reference_project
             </tr>
         </thead>
             <tr>
-            <td><b>none</b></td>
+            <td><b>None</b></td>
                 <td></td>
                 <td></td>
                 <td></td>

@@ -39,7 +39,7 @@ API Reference_datacollection
 # Delete datacollection
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition/<em><b>conditionname</b></em></code>
+<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em></code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
@@ -50,7 +50,6 @@ API Reference_datacollection
      
 - ### Request body
      `{'account':'your email'}`
-
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
     |<b>account</b> | string | user account | Required |
@@ -69,7 +68,7 @@ API Reference_datacollection
 # Get datacollection
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition/<em><b>datacollectionname</b></em></code>
+<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em></code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
@@ -80,7 +79,6 @@ API Reference_datacollection
      
 - ### Request body
      `{'account':'your email'}`
-
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
     |<b>account</b> | string | user account | Required |
@@ -99,7 +97,7 @@ API Reference_datacollection
 # Get all datacollections
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition</code>
+<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
@@ -109,7 +107,6 @@ API Reference_datacollection
     
 - ### Request body
     `{'account':'your email'}`
-
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
     |<b>account</b> | string | user account | Required |

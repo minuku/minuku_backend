@@ -4,11 +4,11 @@ API Reference_user
 
 
 
+
 # Get user profile
 
-- ### Http request 
-    <code> GET https://minukutest.nctu.me/minukutest/<em style="color:DeepPink "><span style="color:DeepPink">user_account</em>/profile </code><br> 
-    <code> GET https://minukutest.nctu.me/minukutest/profile<em style="color:DeepPink ">?user_account=user_account</em> </code>
+- ### Http request  
+<code> GET /profile?<em><b>account</b></em>=youraccount </code>
 
 - ### Path parameter 
  
@@ -25,14 +25,9 @@ API Reference_user
         </thead>
         <tbody>
             <tr>
-                <td style="color:DeepPink ">user_account</td>
+            <td><em><b>account</b></em></td>
                 <td>string</td>
                 <td><b></b></td> 
-            </tr>
-            <tr>
-                <td style="color:DeepPink ">?user_account=user_account</td>
-                <td>string</td>
-                <td><b></b></td>
             </tr>
         </tbody>
       </table>
@@ -80,7 +75,7 @@ API Reference_user
 # Update user profile
 
 - ### Http request 
-    <code> PUT https://minukutest.nctu.me/minukutest/updateProfile<em style="color:DeepPink ">?user_account=user_account</em> </code>
+<code> PUT /updateProfile?<em><b>account</b></em>=youraccount</code>
 
 - ### Path parameter 
  
@@ -97,9 +92,9 @@ API Reference_user
         </thead>
         <tbody>
             <tr>
-                <td style="color:DeepPink ">?user_account=user_account</td>
+            <td><em><b>account</b></em></td>
                 <td>string</td>
-                <td><b></b></td>
+                <td><b></b></td> 
             </tr>
         </tbody>
       </table>
@@ -119,7 +114,7 @@ API Reference_user
                 <th>Value</th>
                 <th>Note</th>
             </tr>
-            <tr><td colspan="4"><code>{'<b>username</b>':'<i>username</i>','<b>password</b>':'<i>passwrod</i>,'<b>email</b>':'<i>new email</i>'}</code></td></tr>
+            <tr><td colspan="4"><code>{'<b>username</b>':'<i>new username</i>','<b>password</b>':'<i>new passwrod</i>,'<b>email</b>':'<i>new email</i>'}</code></td></tr>
         </thead>
         <tbody>
             <tr>

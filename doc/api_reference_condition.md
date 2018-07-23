@@ -50,7 +50,6 @@ API Reference_condition
      
 - ### Request body
      `{'account':'your email'}`
-
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
     |<b>account</b> | string | user account | Required |
@@ -69,7 +68,7 @@ API Reference_condition
 # Get condition
 
 - ### Http request 
-<code> GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition/<em><b>conditionname</b></em></code>
+<code> GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition/<em><b>conditionname</b></em>?<em><b>account</b></em>=youraccount</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
@@ -77,13 +76,12 @@ API Reference_condition
     |<em><b>projectname</b></em> |  | Required |
     |<em><b>situationname</b></em> |  | Required |
     |<em><b>conditionname</b></em> |  | Required |
+    |<em><b>account</b></em> |  | Required |
      
 - ### Request body
-     `{'account':'your email'}`
-
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
-    |<b>account</b> | string | user account | Required |
+    |<b>None</b> |  |  |  |
 
 - ### Response message
 
@@ -99,20 +97,19 @@ API Reference_condition
 # Get all conditions
 
 - ### Http request 
-<code> GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition</code>
+<code> GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition?<em><b>account</b></em>=youraccount</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
     |<em><b>situationname</b></em> |  | Required |
+    |<em><b>account</b></em> |  | Required |
     
 - ### Request body
-    `{'account':'your email'}`
-
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
-    |<b>account</b> | string | user account | Required |
+    |<b>None</b> |  |  |  |
 
 - ### Response message
 

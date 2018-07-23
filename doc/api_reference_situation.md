@@ -6,7 +6,7 @@ API Reference_situation
 # Create situation
 
 - ### Http request 
-<code> POST https://minukutest.nctu.me/minukutest/<em><b>projectname</b></em>/situation </code> 
+<code> POST /project/<em><b>projectname</b></em>/situation </code> 
 
 - ### Path parameter 
  
@@ -100,7 +100,7 @@ API Reference_situation
 # Delete situation
 
 - ### Http request 
-<code> DELETE https://minukutest.nctu.me/minukutest/project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em></code>
+<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em></code>
 
 - ### Path parameter 
  
@@ -199,7 +199,7 @@ API Reference_situation
 # Get situation
 
 - ### Http request 
-<code> GET https://minukutest.nctu.me/minukutest/project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>?<em><b>acocunt</b></em>=youraccount</code>
+<code> GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>?<em><b>acocunt</b></em>=youraccount</code>
 
 - ### Path parameter 
  
@@ -247,10 +247,10 @@ API Reference_situation
                 <th>Type</th>
                 <th>Value</th>
                 <th>Note</th>
-            </tr>            
+            </tr>
         </thead>
             <tr>
-            <td><b>none</b></td>
+            <td><b>None</b></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -301,7 +301,7 @@ API Reference_situation
 # Get all situations
 
 - ### Http request 
-<code> GET https://minukutest.nctu.me/minukutest/project/<em><b>projectname</b></em>/situation?<em><b>acocunt</b></em>=youraccount</code>
+<code> GET /project/<em><b>projectname</b></em>/situation?<em><b>acocunt</b></em>=youraccount</code>
 
 - ### Path parameter 
  
@@ -347,7 +347,7 @@ API Reference_situation
             </tr>
         </thead>
             <tr>
-            <td><b>none</b></td>
+            <td><b>None</b></td>
                 <td></td>
                 <td></td>
                 <td></td>

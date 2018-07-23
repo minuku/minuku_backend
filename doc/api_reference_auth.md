@@ -6,7 +6,7 @@ API Reference_auth
 
 
 - ### Http request 
-    <code> POST https://minukutest.nctu.me/minukutest/login </code>
+    <code> POST /login </code>
 
 - ### Path parameter 
  
@@ -23,7 +23,7 @@ API Reference_auth
         </thead>
         <tbody>
             <tr>
-                <td>None</td>
+            <td><b>None</b></td>
                 <td></td>
                 <td></td>
             </tr>
@@ -98,7 +98,7 @@ API Reference_auth
 # signup
 
 - ### Http request 
-    <code> POST https://minukutest.nctu.me/minukutest/signup </code> 
+    <code> POST /signup </code> 
 
 - ### Path parameter 
  
@@ -115,7 +115,7 @@ API Reference_auth
         </thead>
         <tbody>
             <tr>
-                <td>None</td>
+            <td><b>None</b></td>
                 <td></td>
                 <td></td>
             </tr>
@@ -185,5 +185,3 @@ API Reference_auth
             </tr>
         </tbody>
     </table>
-
----

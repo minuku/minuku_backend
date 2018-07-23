@@ -23,7 +23,7 @@ PI Reference_project
         </thead>
         <tbody>
             <tr>
-                <td>None</td>
+                <td><b>None</b></td>
                 <td></td>
                 <td><b></b></td> 
             </tr>
@@ -90,7 +90,7 @@ PI Reference_project
 # Delete project
 
 - ### Http request 
-<code> DELETE https://minukutest.nctu.me/minukutest/project/<em>projectname</em></code>
+<code> DELETE https://minukutest.nctu.me/minukutest/project/<em><b>projectname</b></em></code>
 
 - ### Path parameter 
  
@@ -107,7 +107,7 @@ PI Reference_project
         </thead>
         <tbody>
             <tr>
-                <td><em>projectname<em></td>
+                <td><em><b>projectname</b><em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -191,12 +191,12 @@ PI Reference_project
         </thead>
         <tbody>
             <tr>
-                <td><em>projectname<em></td>
+                <td><em><b>projectname</b><em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
             <tr>
-                <td><em>account<em></td>
+                <td><em><b>account</b><em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -278,7 +278,7 @@ PI Reference_project
         </thead>
         <tbody>
             <tr>
-                <td><em>account<em></td>
+                <td><em><b>account</b><em></td>
                 <td></td>
                 <td>Required</td> 
             </tr>
@@ -302,7 +302,7 @@ PI Reference_project
             </tr>
         </thead>
             <tr>
-            <td><b>none/b></td>
+            <td><b>none</b></td>
                 <td></td>
                 <td></td>
                 <td></td>

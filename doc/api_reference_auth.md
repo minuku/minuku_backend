@@ -78,7 +78,7 @@ API Reference_auth
             <tr>
             <td><b>Success message</b></td>
                 <td>200</td>
-                <td><code>{ msg:'success', username:'your username', account: 'your signup email addr'}</code></td>
+                <td><code>return token</code></td>
             </tr>
             <tr>
             <td><b>Error message</b></td>
@@ -176,7 +176,7 @@ API Reference_auth
             <tr>
             <td><b>Success message</b></td>
                 <td>200</td>
-                <td><code>{ msg:'create account success', 'username':'username','account':'your signup email addr'}</code></td>
+                <td><code>return token</code></td>
             </tr>
             <tr>
             <td><b>Error message</b></td>

@@ -35,10 +35,8 @@ API Reference_condition
     |<b>Success message</b> | 200 | `{"msg":"condition create success"}` |
     |<b>Error message</b> | 404 | `{"error":"conditionArray empty"}` |
     |<b>Error message</b> | 404 | `{"error":"condition already exist"}` |
-    |<b>Error message</b> | 401 | `HTTP/1.1 401 UNAUTHORIZED 
-	                               Date: Tue, 24 Jul 2018 12:25:33 GMT 
-								   Server: Apache/2.4.18 (Ubuntu) 
-								   WWW-Authenticate: error=invalid_token,error_description=The token expired 
+    |<b>Error message</b> | 401 | `HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>
+					WWW-Authenticate: error=invalid_token,error_description=The token expired 
 								   Content-Length: 0 
 								   Access-Control-Allow-Origin: * 
 								   Content-Type: text/html; charset=utf-8` |

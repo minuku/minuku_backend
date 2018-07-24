@@ -75,14 +75,26 @@ API Reference_user
             </tr>
 			<tr>
 				<td><b>Error message</b></td>
-                <td>404</td>
-                <td>token expired, please login again</td>
+                <td>401</td>
+                <td><code>HTTP/1.1 401 UNAUTHORIZED
+				Date: Tue, 24 Jul 2018 03:41:06 GMT
+				Server: Apache/2.4.18 (Ubuntu)
+				WWW-Authenticate: error=invalid_token,error_description=The token is wrong
+				Content-Length: 0
+				Access-Control-Allow-Origin: *
+				Content-Type: text/html; charset=utf-8</code></td>
             </tr>
 			<tr>
-			<td><b>Error message</b></td>
-                <td>404</td>
-                <td>token error, please login again</td>
-            </tr>	
+				<td><b>Error message</b></td>
+                <td>401</td>
+                <td><code>HTTP/1.1 401 UNAUTHORIZED
+				Date: Tue, 24 Jul 2018 03:41:06 GMT
+				Server: Apache/2.4.18 (Ubuntu)
+				WWW-Authenticate: error=invalid_token,error_description=The token expired
+				Content-Length: 0
+				Access-Control-Allow-Origin: *
+				Content-Type: text/html; charset=utf-8</code></td>
+            </tr>
         </tbody>
     </table>
     
@@ -172,13 +184,25 @@ API Reference_user
             </tr>
 			<tr>
 				<td><b>Error message</b></td>
-                <td>404</td>
-                <td>token expired, please login again</td>
+                <td>401</td>
+                <td><code>HTTP/1.1 401 UNAUTHORIZED
+				Date: Tue, 24 Jul 2018 03:41:06 GMT
+				Server: Apache/2.4.18 (Ubuntu)
+				WWW-Authenticate: error=invalid_token,error_description=The token is wrong
+				Content-Length: 0
+				Access-Control-Allow-Origin: *
+				Content-Type: text/html; charset=utf-8</code></td>
             </tr>
 			<tr>
-			<td><b>Error message</b></td>
-                <td>404</td>
-                <td>token error, please login again</td>
+				<td><b>Error message</b></td>
+                <td>401</td>
+                <td><code>HTTP/1.1 401 UNAUTHORIZED
+				Date: Tue, 24 Jul 2018 03:41:06 GMT
+				Server: Apache/2.4.18 (Ubuntu)
+				WWW-Authenticate: error=invalid_token,error_description=The token expired
+				Content-Length: 0
+				Access-Control-Allow-Origin: *
+				Content-Type: text/html; charset=utf-8</code></td>
             </tr>
         </tbody>
     </table>

@@ -6,7 +6,7 @@ API Reference_datacollection
 # Create datacollection
 
 - ### Http request 
-<code> POST /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection </code> 
+<code> POST /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection?<em><b>token</b></em>=token </code> 
 
 - ### Path parameter 
  
@@ -14,32 +14,32 @@ API Reference_datacollection
     |----------|------------|------|
     | <em><b>projectname<b></em> |  | Required |
     | <em><b>situationname<b></em> |  | Required |
- 
+ 	| <em><b>token<b></em> | contain account  | Required |
 
 
 - ### Request body
-     `{'account':'your email','datacollectionName':'name'}`
+     `{'datacollectionName':'name'}`
  
      | Key   |      Type     |  Value | Note  |
     |:------|:------------:|:------:|:------:|
-    |<b>account</b> | string | user account | Required |
     | <b>datacollectionName</b> | string | condition name | Required |
  
      
 
 - ### Response message
     | Type   |      Code     |  Message |
-    |----------|:------------:|:------:|
+    |----------|:------------:|:------|
     |<b>Success message</b> | 200 | `{"msg":"datacollection create success"}` |
     |<b>Error message</b> | 404 | `{"error":"datacollectionArray empty"}` |
     |<b>Error message</b> | 404 | `{"error":"datacollection already exist"}` |
-    
+    |<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 ---
 
 # Delete datacollection
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em></code>
+<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
@@ -47,42 +47,44 @@ API Reference_datacollection
     |<em><b>projectname</b></em> |  | Required |
     |<em><b>situationname</b></em> |  | Required |
     |<em><b>datacollectionname</b></em> |  | Required |
-     
+    | <em><b>token<b></em> | contain account  | Required |
+
 - ### Request body
-     `{'account':'your email'}`
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
-    |<b>account</b> | string | user account | Required |
+    |<b>None</b> |  |  |  |
 
 - ### Response message
 
     | Type   |      Code     |  Message |
-    |----------|:------------:|:------:|
+    |----------|:------------:|:------|
     |<b>Success message</b> | 200 | `{"msg":"datacollection delete success"}` |
     |<b>Error message</b> | 404 | `{"error":"datacollectionArray empty"}` |
     |<b>Error message</b> | 404 | `{"error":"datacollection Not exist"}` |
-
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 
 ---
 
 # Get datacollection
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em></code>
+<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
-    | Field    |      Description     |  Note |
+    
+	| Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
     |<em><b>situationname</b></em> |  | Required |
     |<em><b>datacollectionname</b></em> |  | Required |
-     
-- ### Request body
-     `{'account':'your email'}`
-     | Key   |      Type     |  Value | Note  |
-    |:------:|:------------:|:------:|:------:|
-    |<b>account</b> | string | user account | Required |
+    | <em><b>token<b></em> | contain account  | Required |
 
+- ### Request body
+    
+	| Key   |      Type     |  Value | Note  |
+    |:------:|:------------:|:------:|:------:|
+	|<b>None</b> |  |  |  |
 - ### Response message
 
     | Type   |      Code     |  Message |
@@ -90,26 +92,26 @@ API Reference_datacollection
     |<b>Success message</b> | 200 | `{"createTime": "Sun Jul 15 11:16:51 2018", "datacollectionType": "datacollection", "lastEdittime": "", "devices": [], "datacollectionName": "datacollection1"}` |
     |<b>Error message</b> | 404 | `{"error":"datacollectionArray empty"}` |
     |<b>Error message</b> | 404 | `{"error":"datacollection Not exist"}` |
-
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
     
 ---
 
 # Get all datacollections
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection</code>
+<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
     |<em><b>situationname</b></em> |  | Required |
-    
+    | <em><b>token<b></em> | contain account  | Required |
 - ### Request body
-    `{'account':'your email'}`
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
-    |<b>account</b> | string | user account | Required |
+    |<b>None</b> |  |  |  |
 
 - ### Response message
 
@@ -117,3 +119,5 @@ API Reference_datacollection
     |----------|:------------:|:------:|
     |<b>Success message</b> | 200 | `["datacollection2", "datacollection1"]` |
     |<b>Error message</b> | 404 | `{"error":"datacollectionArray empty"}` |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |

@@ -6,6 +6,7 @@ import jwt
 import datetime
 from . import authConfig
 from bson.json_util import dumps
+from ..returnMsg import responseMsg
 def verifyToken(token):
 	try:
 		payload = jwt.decode(token,authConfig.SECRET_KEY,algorithm=authConfig.alg)
@@ -27,26 +28,29 @@ def authenticate(payload):
 def login():
 	if request.method=='POST':
 		request_message = request.get_json()
-		for item in db.accountCollection.find():
-			if request_message['account']==item['profile']['account']:
-				if request_message['password']==item['profile']['password']:
-					payload = {
-                               'exp':datetime.datetime.utcnow()+datetime.timedelta(days=0,minutes=0, seconds=180),
-                               'iat':datetime.datetime.utcnow(),
-                               'sub':request_message['account']
-                              }
-					auth_token = authenticate(payload)
-					response_body = {
-				                     'access_token':auth_token,
-									 'token_type':'Bearer',
-									 'expires_in':'180'
-									}
-					resp = make_response(str(response_body))
-					resp.headers['Pragma']='no_cache'
-					resp.headers['Cache-Control']='no-store'
-					return resp
-					#return make_response(json.jsonify({'msg':'success','username':item['profile']['username'],'account':item['profile']['account']}),200)
-				else : return make_response(json.jsonify({'error':'wrong password'}),404)
+		try:
+			profile = db.accountCollection.find({'profile.account':request_message['account']},{'profile':1})[0]['profile']
+		except:
+			return make_response(json.jsonify({'error':responseMsg.profile_Error['msg1']}),404)
+		if profile is not None:
+			if request_message['password']==profile['password']: 
+				payload = {
+						   'exp':datetime.datetime.utcnow()+datetime.timedelta(days=0,minutes=0, seconds=3600),
+						   'iat':datetime.datetime.utcnow(),
+						   'sub':request_message['account']
+						  }
+				db.accountCollection.update({'profile.account':request_message['account']},{'$set':{'profile.lastLoginTime':time.strftime("%c")}})
+				auth_token = authenticate(payload)
+				response_body = {
+								 'access_token':auth_token,
+								 'token_type':'Bearer',
+								 'expires_in':'180'
+								}
+				resp = make_response(str(response_body))
+				resp.headers['Pragma']='no_cache'
+				resp.headers['Cache-Control']='no-store'
+				return resp
+			else : return make_response(json.jsonify({'error':'wrong password'}),404)
 		return make_response(json.jsonify({'error':'no this account'}),404)
 
 
@@ -60,7 +64,7 @@ def signup():
 				return make_response(json.jsonify({'error':'this account already used'}),404)
 		db.accountCollection.insert_one({'profile':account,'projects':[]})
 		payload = {
-                   'exp':datetime.datetime.utcnow()+datetime.timedelta(days=0,minutes=0, seconds=180),
+                   'exp':datetime.datetime.utcnow()+datetime.timedelta(days=0,minutes=0, seconds=3600),
                    'iat':datetime.datetime.utcnow(),
                    'sub':request_message['account']
                   }
@@ -75,5 +79,4 @@ def signup():
 		resp.headers['Cache-Control']='no-store'
 		return resp
 	
-		#return make_response(json.jsonify({'msg':'create account success','username':request_message['username'],'account':request_message['account']}),200)
 

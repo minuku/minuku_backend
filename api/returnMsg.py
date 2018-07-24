@@ -28,4 +28,6 @@ class responseMsg():
                           'msg2':'datacollection delete success'
                          }
 
+	profile_Error = {'msg1':'user Not exist'
+                        }
 

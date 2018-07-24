@@ -18,5 +18,5 @@ class User():
                      {'$set':{'profile.username':data['username'],\
                              'profile.password':data['password'],\
                              'profile.email':data['email'],\
-                             'profile.updataTime':time.strftime("%c")}},upsert=True)
+                             'profile.updateTime':time.strftime("%c")}},upsert=True)
               		

@@ -24,7 +24,8 @@ class Project():
 	def createProject(self):
 		result = Project.verifyProject(projectOwner = self.projectOwner,projectName = self.projectName)     
 		if (type(result) is int):
-			return result
+			return responseMsg.project_Error['msg2']
+			#return "yes"
 		else:
 			self.project_schema['createTime']= time.strftime("%c")
 			db.accountCollection.update({'profile.account':self.projectOwner},{'$push':{'projects':self.project_schema}},upsert=True) 

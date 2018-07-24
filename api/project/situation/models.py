@@ -26,12 +26,13 @@ class Situation():
 				return True
 		return False
 	def createSituation(self):
+		result = Situation.verifySituation(projectOwner = self.projectOwner,projectName = self.projectName,situationName = self.situationName)
 		if(type(result) is not list):#means project or situation not exist
 			return result
 		if(type(result)is list and len(result)==2):
 			return responseMsg.situation_Error['msg2']
 		if(type(result)is list and len(result)==1): 
-			path ='projects.'+str( result[0])+'.situations' # 0 is projectIndex
+			path ='projects.'+str( result[0])+'.situations' # result[0] is projectIndex
 			self.situation_schema['createTime'] = time.strftime("%c")
 			db.accountCollection.update({'profile.account':self.projectOwner},{'$push':{path:self.situation_schema}})
 			return responseMsg.situation['msg1']

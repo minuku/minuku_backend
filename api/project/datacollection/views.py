@@ -6,51 +6,63 @@ from flask import request, make_response,json
 from urllib import parse
 from bson.json_util import dumps
 from .models import Datacollection
+from api.auth.views import verifyToken
 
 @datacollection_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/datacollection',methods=['POST'])
 def createDatacollection(projectName,situationName):
-	obj = request.get_json()
-	datacollection = Datacollection(projectOwner = obj['account'],
-                                        projectName = projectName, 
-                                        situationName = situationName,
-                                        datacollectionName=obj['datacollectionName'],
-                                        datacollectionType=obj['datacollectionType'],
-                                       )
-	result = datacollection.createDatacollection()
-	if result in list(responseMsg.situation_Error.values()):
-		return make_response(json.jsonify({'error':result}),404)
-	if result in list(responseMsg.project_Error.values()):
-		return make_response(json.jsonify({'error':result}),404)
-	if result in list(responseMsg.datacollection_Error.values()):
-		return make_response(json.jsonify({'error':result}),404)
-	else: return make_response(json.jsonify({'msg':result}),200)
+	token = parse.parse_qs(parse.urlparse(request.url).query)['token'][0]
+	payload = verifyToken(token)
+	if (type(payload)is not dict):
+		return make_response(payload)
+	else:
+		account = payload['sub']
+		obj = request.get_json()
+		datacollection = Datacollection(projectOwner = account,
+											projectName = projectName, 
+											situationName = situationName,
+											datacollectionName=obj['datacollectionName'],
+											datacollectionType=obj['datacollectionType'],
+										   )
+		result = datacollection.createDatacollection()
+		if result in list(responseMsg.situation_Error.values()):
+			return make_response(json.jsonify({'error':result}),404)
+		if result in list(responseMsg.project_Error.values()):
+			return make_response(json.jsonify({'error':result}),404)
+		if result in list(responseMsg.datacollection_Error.values()):
+			return make_response(json.jsonify({'error':result}),404)
+		else: return make_response(json.jsonify({'msg':result}),200)
 
 
 @datacollection_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/datacollection/<string:datacollectionName>',methods=['DELETE'])
 def deleteDatacollection(projectName,situationName,datacollectionName):
-	obj = request.get_json()
-	datacollection = Datacollection(projectOwner = obj['account'],
+	token = parse.parse_qs(parse.urlparse(request.url).query)['token'][0]
+	payload = verifyToken(token)
+	if (type(payload)is not dict):
+		return make_response(payload)
+	else:
+		account = payload['sub']	
+		datacollection = Datacollection(projectOwner = account,
                                         projectName = projectName,
                                         situationName = situationName,
                                         datacollectionName=datacollectionName
                                        )
-	result = datacollection.deleteDatacollection()
-	if result in list(responseMsg.situation_Error.values()):
-		return make_response(json.jsonify({'error':result}),404)
-	if result in list(responseMsg.project_Error.values()):
-		return make_response(json.jsonify({'error':result}),404)
-	if result in list(responseMsg.datacollection_Error.values()):
-		return make_response(json.jsonify({'error':result}),404)
-	else: return make_response(json.jsonify({'msg':result}),200)
+		result = datacollection.deleteDatacollection()
+		if result in list(responseMsg.situation_Error.values()):
+			return make_response(json.jsonify({'error':result}),404)
+		if result in list(responseMsg.project_Error.values()):
+			return make_response(json.jsonify({'error':result}),404)
+		if result in list(responseMsg.datacollection_Error.values()):
+			return make_response(json.jsonify({'error':result}),404)
+		else: return make_response(json.jsonify({'msg':result}),200)
 
 @datacollection_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/datacollection/<string:datacollectionName>',methods=['GET'])
 def getDatacollection(projectName,situationName,datacollectionName):
-	try:
-		obj = request.get_json()
-		account = obj['account']
-	except TypeError:
-		url = request.url
-		account = parse.parse_qs(parse.urlparse(url).query)['account'][0]
+	token = parse.parse_qs(parse.urlparse(request.url).query)['token'][0]
+	payload = verifyToken(token)
+	if (type(payload)is not dict):
+		return make_response(payload)
+	else:
+		account = payload['sub']
 	datacollection = Datacollection(projectOwner = account,
                                         projectName = projectName,
                                         situationName = situationName,
@@ -67,12 +79,12 @@ def getDatacollection(projectName,situationName,datacollectionName):
 
 @datacollection_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/datacollection',methods=['GET'])
 def getAllDatacollections(projectName,situationName):
-	try:
-		obj = request.get_json()
-		account = obj['account']
-	except TypeError:
-		url = request.url
-		account = parse.parse_qs(parse.urlparse(url).query)['account'][0]
+	token = parse.parse_qs(parse.urlparse(request.url).query)['token'][0]
+	payload = verifyToken(token)
+	if (type(payload)is not dict):
+		return make_response(payload)
+	else:
+		account = payload['sub']
 	result = Datacollection.getAllDatacollections(projectOwner =account,
                                                       projectName = projectName,
                                                       situationName = situationName

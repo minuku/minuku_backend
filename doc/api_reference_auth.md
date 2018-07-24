@@ -78,7 +78,7 @@ API Reference_auth
             <tr>
             <td><b>Success message</b></td>
                 <td>200</td>
-                <td><code>return token</code></td>
+                <td><code>{'access_token':'your token(binary)','token_type':'Bearer','expires_in':default is 3600 sec}</code></td>
             </tr>
             <tr>
             <td><b>Error message</b></td>
@@ -176,7 +176,7 @@ API Reference_auth
             <tr>
             <td><b>Success message</b></td>
                 <td>200</td>
-                <td><code>return token</code></td>
+                <td><code>{'access_token':'your token(binary)','token_type':'Bearer','expires_in':default is 3600sec}</code></td>
             </tr>
             <tr>
             <td><b>Error message</b></td>

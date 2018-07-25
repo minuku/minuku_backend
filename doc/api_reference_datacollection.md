@@ -22,9 +22,8 @@ API Reference_datacollection
  
      | Key   |      Type     |  Value | Note  |
     |:------|:------------:|:------:|:------:|
-    | <b>datacollectionName</b> | string | condition name | Required |
- 
-     
+    | <b>datacollectionName</b> | string | datacollection name | Required |
+	| <b>datacollectionType</b> | string | datacollection type | Required |     
 
 - ### Response message
     | Type   |      Code     |  Message |

@@ -22,7 +22,7 @@ def verifyToken(token):
 
 def authenticate(payload):
 	auth_token = jwt.encode(payload,authConfig.SECRET_KEY,algorithm=authConfig.alg)
-	return auth_token
+	return auth_token.decode('ascii')
 
 @auth.route('/login',methods=['GET','POST'])
 def login():
@@ -44,7 +44,7 @@ def login():
 				response_body = {
 								 'access_token':auth_token,
 								 'token_type':'Bearer',
-								 'expires_in':'180'
+								 'expires_in':'3600'
 								}
 				resp = make_response(str(response_body))
 				resp.headers['Pragma']='no_cache'
@@ -72,7 +72,7 @@ def signup():
 		response_body = {
                          'access_token':auth_token,
 						 'token_type':'Bearer',
-						 'expires_in':'180'
+						 'expires_in':'3600'
 						}
 		resp = make_response(str(response_body))
 		resp.headers['Pragma']='no_cache'

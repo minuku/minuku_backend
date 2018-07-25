@@ -69,7 +69,7 @@ API Reference_datacollection
 # Get datacollection
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>?<em><b>token</b></em>=token</code>
+<code>GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     
@@ -100,7 +100,7 @@ API Reference_datacollection
 # Get all datacollections
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection?<em><b>token</b></em>=token</code>
+<code>GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |

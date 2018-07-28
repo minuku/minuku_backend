@@ -129,7 +129,7 @@ API Reference_device
 
 ---
 
-# Edit devices
+# Edit device
 
 - ### Http request 
 <code> PUT /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
@@ -146,6 +146,7 @@ API Reference_device
 
 - ### Request body
     `{'deviceContent':'whatever you want'}`
+
 	| Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
 	| <b>deviceContent</b> | string | new device content | Required |

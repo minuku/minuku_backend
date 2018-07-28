@@ -91,7 +91,7 @@ API Reference_device
 
     | Type   |      Code     |  Message |
     |----------|:------------:|:------|
-    |<b>Success message</b> | 200 | `{"msg":"device delete success"}` |
+    |<b>Success message</b> | 200 | `{"deviceName": "device3", "deviceContent": "", "createTime": "Sat Jul 28 03:45:44 2018", "lastEditTime": "", "deviceType": "mobile"}` |
     |<b>Error message</b> | 404 | `{"error":"deviceArray empty"}` |
     |<b>Error message</b> | 404 | `{"error":"device Not exist"}` |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
@@ -121,7 +121,7 @@ API Reference_device
 
     | Type   |      Code     |  Message |
     |----------|:------------:|:------|
-    |<b>Success message</b> | 200 | `{"msg":"device delete success"}` |
+    |<b>Success message</b> | 200 | `[{"deviceName": "device1", "deviceContent": "", "createTime": "Sat Jul 28 03:45:44 2018", "lastEditTime": "", "deviceType": "mobile"},{"deviceName": "device3", "deviceContent": "", "createTime": "Sat Jul 28 03:45:44 2018", "lastEditTime": "", "deviceType": "mobile"}]` |
     |<b>Error message</b> | 404 | `{"error":"deviceArray empty"}` |
     |<b>Error message</b> | 404 | `{"error":"device Not exist"}` |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
@@ -155,7 +155,7 @@ API Reference_device
 
     | Type   |      Code     |  Message |
     |----------|:------------:|:------|
-    |<b>Success message</b> | 200 | `{"msg":"device delete success"}` |
+    |<b>Success message</b> | 200 | `{"msg":"device edit success"}` |
     |<b>Error message</b> | 404 | `{"error":"deviceArray empty"}` |
     |<b>Error message</b> | 404 | `{"error":"device Not exist"}` |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |

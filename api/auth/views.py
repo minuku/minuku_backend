@@ -46,7 +46,7 @@ def login():
 								 'token_type':'Bearer',
 								 'expires_in':'3600'
 								}
-				resp = make_response(str(response_body))
+				resp = make_response(json.jsonify(response_body),200)
 				resp.headers['Pragma']='no_cache'
 				resp.headers['Cache-Control']='no-store'
 				return resp
@@ -74,7 +74,7 @@ def signup():
 						 'token_type':'Bearer',
 						 'expires_in':'3600'
 						}
-		resp = make_response(str(response_body))
+		resp = make_response(json.jsonify(response_body),200)
 		resp.headers['Pragma']='no_cache'
 		resp.headers['Cache-Control']='no-store'
 		return resp

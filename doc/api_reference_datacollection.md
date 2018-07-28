@@ -18,7 +18,7 @@ API Reference_datacollection
 
 
 - ### Request body
-     `{'datacollectionName':'name'}`
+     `{'datacollectionType':'type','datacollectionName':'name'}`
  
      | Key   |      Type     |  Value | Note  |
     |:------|:------------:|:------:|:------:|

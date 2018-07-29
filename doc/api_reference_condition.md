@@ -126,7 +126,7 @@ API Reference_condition
 
     | Type   |      Code     |  Message |
     |----------|:------------:|:------|
-    |<b>Success message</b> | 200 | `[...]`(whole condition array of this project) |
+    |<b>Success message</b> | 200 | `[...]`(whole condition array of this situation) |
     |<b>Error message</b> | 200 | `[]`  (if conditionArray is empty, just return an empty array) |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
     |<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |

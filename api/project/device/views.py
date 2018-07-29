@@ -69,7 +69,7 @@ def getDevice(projectName,situationName,datacollectionName,deviceName):
 		if result in list(responseMsg.device_Error.values()):
 			return make_response(json.jsonify({'error':result}),404)
 		else:
-			return result
+			return make_response(result,200)
 @device_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/datacollection/<string:datacollectionName>/device',methods=['GET'])
 def getAllDevices(projectName,situationName,datacollectionName):
 	token = parse.parse_qs(parse.urlparse(request.url).query)['token'][0]
@@ -90,7 +90,8 @@ def getAllDevices(projectName,situationName,datacollectionName):
 	if result in list(responseMsg.datacollection_Error.values()):
 		return make_response(json.jsonify({'error':result}),404)
 	if result in list(responseMsg.device_Error.values()):
-		return make_response(json.jsonify({'error':result}),404)
+		#return make_response(json.jsonify({'error':result}),404)
+		return make_response('[]',200)
 	else:
 		return result
 

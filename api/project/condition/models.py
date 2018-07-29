@@ -8,39 +8,40 @@ from bson.json_util import dumps
 from ..models import Project
 from ..situation.models import Situation
 
-rules=['transpotation',
-       'accelerometer',
-       'rotation',
-       'gravity',
-       'gyroscope',
-       'light',
-       'magnetic',
-       'pressure',
-       'proximity',
-       'temperature',
-       'humidity',
-       'appUsage',
-       'ringer',
-       'battery',
-       'telephony',
-       'connectivity'
-       ]
+#rules=['transpotation',
+#       'accelerometer',
+#      'rotation',
+#       'gravity',
+#       'gyroscope',
+#       'light',
+#       'magnetic',
+#       'pressure',
+#       'proximity',
+#       'temperature',
+#       'humidity',
+#       'appUsage',
+#       'ringer',
+#       'battery',
+#       'telephony',
+#       'connectivity'
+#       ]
  
 class Condition():
-	def __init__(self,projectOwner=None,projectName=None,conditionName=None,situationName=None):
+	def __init__(self,projectOwner=None,projectName=None,conditionName=None,situationName=None,conditionContent=None):
 		self.projectOwner = projectOwner
 		self.projectName = projectName
 		self.conditionName = conditionName
 		self.situationName = situationName
 		self.condition_schema = {
                                          'conditionName':conditionName,
-                                         'timeStart':'',
-                                         'timeEnd':'',
-                                         'timeLasting':'',
-                                         'timeLasting_unit':'',
-                                         'rules':rules,
+                                         #'timeStart':'',
+                                         #'timeEnd':'',
+                                         #'timeLasting':'',
+                                         #'timeLasting_unit':'',
+                                         #'rules':,
                                          'createTime':'',
-                                         'lastEditTime':''
+                                         'lastEditTime':'',
+										 'conditionContent':conditionContent,
                    }
 
 	def createCondition(self):
@@ -90,11 +91,32 @@ class Condition():
 			if(type(result[0]) is int):
 				return responseMsg.condition_Error['msg1']
 			else:
-				conditionList = []
-				for item in result:
-					conditionList.append(item['conditionName'])
-				return dumps(conditionList)
-		
+				#conditionList = []
+				#for item in result:
+				#	conditionList.append(item['conditionName'])
+				#return dumps(conditionList)
+				return dumps(result)
+	
+	def editCondition(self,newConditionName=None,newConditionContent=None):
+		result = Condition.verifyCondition(projectOwner=self.projectOwner,projectName = self.projectName,situationName=self.situationName,conditionName = self.conditionName)
+		if(type(result) is not list ):
+			return result
+		if(type(result)is list and len(result)==1):
+			return responseMsg.situation_Error['msg3']
+		if(type(result)is list and len(result)==2):
+			return responseMsg.condition_Error['msg3']	
+		if(type(result)is list and len(result)==3):
+			path = 'projects.'+str(result[0])+'.situations.'+ str(result[1])+'.conditions.'+str(result[2])
+			db.accountCollection.update({'profile.account':self.projectOwner},{'$set':{
+			                                                                           path+'.lastEditTime':time.strftime("%c"),
+																					   path+'.conditionContent':newConditionContent,
+																					   path+'.conditionName':newConditionName
+																					  }})
+
+
+			return responseMsg.condition['msg3']
+
+
 	@staticmethod
 	def isConditionExist(conditionArray,conditionName):
 		for item in conditionArray:

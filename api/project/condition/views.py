@@ -17,16 +17,9 @@ def createCondition(projectName,situationName):
 	else:
 		account = payload['sub']
 		obj = request.get_json()
-		condition = Condition(projectOwner = account,projectName = projectName, situationName = situationName,conditionName=obj['conditionName'])
+		condition = Condition(projectOwner = account,projectName = projectName, situationName = situationName,conditionName=obj['conditionName'],conditionContent=obj['conditionContent'])
 		result = condition.createCondition()
-		if result in list(responseMsg.situation_Error.values()):
-			return make_response(json.jsonify({'error':result}),404)
-		if result in list(responseMsg.project_Error.values()):
-			return make_response(json.jsonify({'error':result}),404)
-		if result in list(responseMsg.condition_Error.values()):
-			return make_response(json.jsonify({'error':result}),404)
-		else: return make_response(json.jsonify({'msg':result}),200)
-
+		return printResult(result)
 @condition_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/condition/<string:conditionName>',methods=['DELETE'])
 def deleteCondition(projectName,situationName,conditionName):
 	token = parse.parse_qs(parse.urlparse(request.url).query)['token'][0]
@@ -37,14 +30,7 @@ def deleteCondition(projectName,situationName,conditionName):
 		account = payload['sub']
 		condition = Condition(projectOwner = account,projectName = projectName,situationName=situationName, conditionName=conditionName)
 		result = condition.deleteCondition()
-		if result in list(responseMsg.situation_Error.values()):
-			return make_response(json.jsonify({'error':result}),404)
-		if result in list(responseMsg.project_Error.values()):
-			return make_response(json.jsonify({'error':result}),404)
-		if result in list(responseMsg.condition_Error.values()):
-			return make_response(json.jsonify({'error':result}),404)
-		else: return make_response(json.jsonify({'msg':result}),200)
-
+		return printResult(result)
 @condition_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/condition/<string:conditionName>',methods=['GET'])
 def getCondition(projectName,situationName,conditionName):
 	token = parse.parse_qs(parse.urlparse(request.url).query)['token'][0]
@@ -53,8 +39,8 @@ def getCondition(projectName,situationName,conditionName):
 		return make_response(payload)
 	else:
 		account = payload['sub']
-	condition = Condition(projectOwner = account,projectName = projectName,situationName=situationName, conditionName=conditionName)
-	result = condition.getCondition()
+		condition = Condition(projectOwner = account,projectName = projectName,situationName=situationName, conditionName=conditionName)
+		result = condition.getCondition()
 	if result in list(responseMsg.situation_Error.values()):
 		return make_response(json.jsonify({'error':result}),404)
 	if result in list(responseMsg.project_Error.values()):
@@ -62,6 +48,25 @@ def getCondition(projectName,situationName,conditionName):
 	if result in list(responseMsg.condition_Error.values()):
 		return make_response(json.jsonify({'error':result}),404)
 	else: return make_response(result,200)
+@condition_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/condition/<string:conditionName>',methods=['PUT'])
+def editCondition(projectName,situationName,conditionName):
+	token = parse.parse_qs(parse.urlparse(request.url).query)['token'][0]
+	payload = verifyToken(token)
+	if(type(payload) is not dict):
+		return make_response(payload)
+	else:
+		account = payload['sub']
+	obj = request.get_json()
+
+	condition = Condition(projectOwner = account,projectName = projectName,situationName=situationName, conditionName=conditionName)
+	result = condition.editCondition(newConditionName= obj['conditionName'],newConditionContent=obj['conditionContent'])
+	if result in list(responseMsg.situation_Error.values()):
+		return make_response(json.jsonify({'error':result}),404)
+	if result in list(responseMsg.project_Error.values()):
+		return make_response(json.jsonify({'error':result}),404)
+	if result in list(responseMsg.condition_Error.values()):
+		return make_response(json.jsonify({'error':result}),404)
+	else: return make_response(json.jsonify({'msg':result}),200)
 
 @condition_blueprint.route('/project/<string:projectName>/situation/<string:situationName>/condition',methods=['GET'])
 def getAllConditions(projectName,situationName):
@@ -77,6 +82,16 @@ def getAllConditions(projectName,situationName):
 	if result in list(responseMsg.project_Error.values()):
 		return make_response(json.jsonify({'error':result}),404)
 	if result in list(responseMsg.condition_Error.values()):
-		return make_response(json.jsonify({'error':result}),404)
+		#return make_response(json.jsonify({'error':result}),404)
+		return make_response('[]',200)
 	else: return make_response(result,200)
 
+
+def printResult(result):
+	if result in list(responseMsg.project_Error.values()):
+		return make_response(json.jsonify({'error':result}),404)
+	if result in list(responseMsg.situation_Error.values()):
+		return make_response(json.jsonify({'error':result}),404)
+	if result in list(responseMsg.condition_Error.values()):
+		return make_response(json.jsonify({'error':result}),404)
+	else: return make_response(json.jsonify({'msg':result}),200)

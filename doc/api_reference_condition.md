@@ -20,7 +20,7 @@ API Reference_condition
 
 - ### Request body
      
-	 `{'conditionName':'name'}`
+	 `{'conditionName':'name','conditionContent':'whatever you need'}`
  
     | Key   |      Type     |  Value | Note  |
     |:------|:-------------:|:------:|:-----:|
@@ -126,7 +126,42 @@ API Reference_condition
 
     | Type   |      Code     |  Message |
     |----------|:------------:|:------|
-    |<b>Success message</b> | 200 | `["condition2", "condition1"]` |
-    |<b>Error message</b> | 404 | `{"error":"conditionArray empty"}` |
+    |<b>Success message</b> | 200 | `[...]`(whole condition array of this project) |
+    |<b>Error message</b> | 200 | `[]`  (if conditionArray is empty, just return an empty array) |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
     |<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+
+---
+
+# Edit condition
+
+- ### Http request 
+<code> PUT /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/condition/<em><b>conditionname</b></em>?<em><b>token</b></em>=token</code>
+
+- ### Path parameter 
+    
+	| Field    |      Description     |  Note |
+    |----------|:------------:|:------:|
+    |<em><b>projectname</b></em> |  | Required |
+    |<em><b>situationname</b></em> |  | Required |
+    |<em><b>conditionname</b></em> |  | Required |
+    | <em><b>token<b></em> | contain account  | Required |
+
+- ### Request body
+     
+	| Key   |      Type     |  Value | Note  |
+    |:------:|:------------:|:------:|:------:|
+    |<b>conditionName</b> | string  | new condition name | required |
+	|<b>conditionContent</b> |   | new condition content(anything would be accepted) | required |
+
+- ### Response message
+
+    | Type   |      Code     |  Message |
+    |----------|:------------:|:------| 
+	|<b>Success message</b> | 200 | `{"msg":"condition edit success"}` |
+    |<b>Error message</b> | 404 | `{"error":"conditionArray empty"}` |
+    |<b>Error message</b> | 404 | `{"error":"condition Not exist"}` |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+    |<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+
+

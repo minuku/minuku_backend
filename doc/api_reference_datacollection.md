@@ -6,14 +6,13 @@ API Reference_datacollection
 # Create datacollection
 
 - ### Http request 
-<code> POST /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection?<em><b>token</b></em>=token </code> 
+<code> POST /project/<em><b>projectname</b></em>/datacollection?<em><b>token</b></em>=token </code> 
 
 - ### Path parameter 
  
     | Field   |      Description     |  Note |
     |----------|------------|------|
     | <em><b>projectname<b></em> |  | Required |
-    | <em><b>situationname<b></em> |  | Required |
  	| <em><b>token<b></em> | contain account  | Required |
 
 
@@ -38,13 +37,12 @@ API Reference_datacollection
 # Delete datacollection
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>?<em><b>token</b></em>=token</code>
+<code> DELETE /project/<em><b>projectname</b></em>/datacollection/<em><b>datacollectionname</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
-    |<em><b>situationname</b></em> |  | Required |
     |<em><b>datacollectionname</b></em> |  | Required |
     | <em><b>token<b></em> | contain account  | Required |
 
@@ -68,14 +66,13 @@ API Reference_datacollection
 # Get datacollection
 
 - ### Http request 
-<code>GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>?<em><b>token</b></em>=token</code>
+<code>GET /project/<em><b>projectname</b></em>/datacollection/<em><b>datacollectionname</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     
 	| Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
-    |<em><b>situationname</b></em> |  | Required |
     |<em><b>datacollectionname</b></em> |  | Required |
     | <em><b>token<b></em> | contain account  | Required |
 
@@ -99,13 +96,12 @@ API Reference_datacollection
 # Get all datacollections
 
 - ### Http request 
-<code>GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection?<em><b>token</b></em>=token</code>
+<code>GET /project/<em><b>projectname</b></em>/datacollection?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
-    |<em><b>situationname</b></em> |  | Required |
     | <em><b>token<b></em> | contain account  | Required |
 - ### Request body
      | Key   |      Type     |  Value | Note  |

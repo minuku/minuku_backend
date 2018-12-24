@@ -9,14 +9,14 @@ API Reference_user
 
 - ### Path parameter 
 
-| Field   |      Description     |  Note |
-    |:----------:|:------------:|:------:|
- 	| <em><b>token<b></em> | contain account  | Required |
+    | Field   |      Description     |  Note |
+    |----------|------------|------|
+    | <em><b>token<b></em> | contain account  | Required |
 
 
 - ### Request body 
     | Key   |      Type     |  Value | Note  |
-    |:------|:------------:|:------:|:------:|
+    |------|------------|------|------|
     | <b>None</b> |  | | |
 
 
@@ -34,7 +34,7 @@ API Reference_user
     | <em><b>token<b></em> | contain account  | Required |
 
 - ### Request body
-    {'<b>username</b>':'<i>new username</i>','<b>password</b>':'<i>new passwrod</i>,'<b>email</b>':'<i>new email</i>'}
+    `{'username':'new username','password':'new passwrod,'email':'new email'}`
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
     |<b>username</b> | string | new username | writable |

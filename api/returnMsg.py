@@ -1,4 +1,14 @@
 class responseMsg():
+	project_error = {
+						'projectArray empty':400,
+						'project already exist':400,
+						'project Not exist':400
+					}
+	project_success = {
+						'project create success':200,
+                   		'project delete success':200,
+				   		'project edit success':200
+					}
 	project_Error = {'msg1':'projectArray empty',
                          'msg2':'project already exist',
                          'msg3':'project Not exist'
@@ -7,6 +17,17 @@ class responseMsg():
                    'msg2':'project delete success',
 				   'msg3':'project edit success'
                   }
+	questionnaire_Error = {'msg1':'questionnaireArray empty',
+                         'msg2':'questionnaire already exist',
+                         'msg3':'questionnaire Not exist'
+                        }
+	questionnaire = {'msg1':'questionnaire create success',
+                   'msg2':'questionnaire delete success',
+				   'msg3':'questionnaire edit success'
+                  }
+
+
+				  
 	situation_Error = {'msg1':'situationArray empty',
                            'msg2':'situation already exist',
                            'msg3':'situation Not exist'

@@ -5,14 +5,17 @@ import time
 from bson import Code
 
 class Project():
-	def __init__(self,projectName=None,projectOwner=None):
+	def __init__(self,projectName=None,projectOwner=None,requestBody=None):
 		self.projectName = projectName
 		self.projectOwner =projectOwner
+		self.requestBody=requestBody
 		self.project_schema = {
                   'projectName':projectName,
                   'situations':[],
                   'createTime':'',
-                  'lastEditTime':''
+                  'lastEditTime':'',
+				  'dataCollections':[],
+				  'questionnaires':[]
                  }
 
 	@staticmethod
@@ -24,7 +27,8 @@ class Project():
 	def createProject(self):
 		result = Project.verifyProject(projectOwner = self.projectOwner,projectName = self.projectName)     
 		if (type(result) is int):
-			return responseMsg.project_Error['msg2']
+			#return responseMsg.project_Error['msg2']
+			return "project already exist"
 			#return "yes"
 		else:
 			self.project_schema['createTime']= time.strftime("%c")
@@ -56,19 +60,53 @@ class Project():
 			return dumps(projectList)
 		else: return result		
 
+	def android_getProject(self):
+		result = Project.verifyProject(projectOwner = self.projectOwner,projectName = self.projectName)
+		if(type(result)is int):
+			path = 'projects.'+str(result)
+			project = db.accountCollection.find({'profile.account':self.projectOwner},{'projects':1})[0]['projects'][result]
+			project = Project.dealwithProject(project)
+			return dumps(project)
+		else : return result
+	@staticmethod
+	def dealwithProject(project):
+		for key in list(project.keys()):
+			if project[key] == "" or len(project[key])==0:
+				del project[key]
+			elif key=='dataCollections':
+				i = 0
+				while(i<len(project['dataCollections'])):
+					for key in list(project['dataCollections'][i].keys()):
+						if project['dataCollections'][i][key] =="" or len(project['dataCollections'][i][key])==0:
+							del project['dataCollections'][i][key]
+					i+=1	
+
+			elif key=="situations":
+				i = 0		
+				while(i< len(project['situations'])):
+					for key in list(project['situations'][i].keys()):
+						if project['situations'][i][key]=="" or len(project['situations'][i][key])==0:
+							del project['situations'][i][key]
+						elif key=='conditions':
+							j = 0
+							while(j<len(project['situations'][i]['conditions'])):
+								for key in list(project['situations'][i]['conditions'][j].keys()):
+									if project['situations'][i]['conditions'][j][key]=="" or len(project['situations'][i]['conditions'][j][key])==0:
+										del project['situations'][i]['conditions'][j][key]
+								j+=1
+					i+=1
+		return project
+
 	def editProject(self):
-		array_index = 0;
-		obj = db.accountCollection.find({'profile.account':self.projectOwner})	
-		obj = obj[0]['projects']
-		i = -1
-		for index in obj:
-			i+=1
-			if index['projectName']=='tomcat':
-				array_index = i
-		temp = 'projects.'+str(array_index)+'.projectName'
-		db.accountCollection.update({'profile.account':self.projectOwner},{'$set':{temp:'tomt'}})
-		obj = db.accountCollection.find({'profile.account':self.owner})
-		return dumps(obj[0]['projects'])
+		result = Project.verifyProject(projectOwner = self.projectOwner,projectName = self.projectName)
+		if(type(result) is int):
+			path = 'projects.'+str(result)
+			oldProjectName = self.projectName
+			newProjectName = self.requestBody['newProjectName']
+			temp = 'projects.'+str(result)+'.projectName'
+			db.accountCollection.update({'profile.account':self.projectOwner},{'$set':{temp:newProjectName,'projects.'+str(result)+'.lastEditTime':time.strftime("%c")}})
+			return "project edit success"
+		else : return result
 	
 	@staticmethod
 	def isProjectsEmpty(userAccount): 

@@ -35,7 +35,7 @@ def login():
 		if profile is not None:
 			if request_message['password']==profile['password']: 
 				payload = {
-						   'exp':datetime.datetime.utcnow()+datetime.timedelta(days=0,minutes=0, seconds=3600),
+						   'exp':datetime.datetime.utcnow()+datetime.timedelta(days=365,minutes=0, seconds=3600),
 						   'iat':datetime.datetime.utcnow(),
 						   'sub':request_message['account']
 						  }
@@ -64,7 +64,7 @@ def signup():
 				return make_response(json.jsonify({'error':'this account already used'}),404)
 		db.accountCollection.insert_one({'profile':account,'projects':[]})
 		payload = {
-                   'exp':datetime.datetime.utcnow()+datetime.timedelta(days=0,minutes=0, seconds=3600),
+                   'exp':datetime.datetime.utcnow()+datetime.timedelta(days=365,minutes=0, seconds=3600),
                    'iat':datetime.datetime.utcnow(),
                    'sub':request_message['account']
                   }

@@ -22,6 +22,8 @@ def create_app():
 	app.register_blueprint(condition_blueprint)
 	from .project.datacollection import datacollection_blueprint
 	app.register_blueprint(datacollection_blueprint)
+	from .project.questionnaire import questionnaire_blueprint
+	app.register_blueprint(questionnaire_blueprint)
 	from .project.device import device_blueprint
 	app.register_blueprint(device_blueprint)
 	return app

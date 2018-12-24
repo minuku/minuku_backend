@@ -24,6 +24,25 @@ def createsituation(projectName):
 			return make_response(json.jsonify({'error':result}),404)
 		else:
 			return make_response(json.jsonify({'msg':result}),200)
+@situation_blueprint.route('/project/<string:projectName>/situation/<string:situationName>',methods=['PUT'])
+def editsituation(projectName,situationName):
+	token = parse.parse_qs(parse.urlparse(request.url).query)['token'][0]
+	payload = verifyToken(token)
+	if(type(payload)is not dict):
+		return make_response(payload)
+	else:	
+		account = payload['sub']
+		obj = request.get_json()
+		situation = Situation(projectName=projectName,projectOwner= account,requestBody=obj,situationName=situationName)
+		result = situation.editSituation()
+		if result in list(responseMsg.situation_Error.values()):
+			return make_response(json.jsonify({'error':result}),404)
+		if result in list(responseMsg.project_Error.values()):
+			return make_response(json.jsonify({'error':result}),404)
+		else:
+			return make_response(json.jsonify({'msg':result}),200)
+
+
 
 @situation_blueprint.route('/project/<string:projectName>/situation/<string:situationName>',methods=['DELETE'])
 def deletesituation(projectName,situationName):

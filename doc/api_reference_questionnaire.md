@@ -17,12 +17,13 @@ API Reference_questionnaire
 
 
 - ### Request body
-     `{'questionnaireName':'name','questionnaireType':'type'}`
+     `{'questionnaireName':'name','questionnaireType':'type','questionnaireContent':'whatever you need'}`
  
      | Key   |      Type     |  Value | Note  |
     |:------|:------------:|:------:|:------:|
     | <b>questionnaireName</b> | string | questionnaire name | Required |
 	| <b>questionnaireType</b> | string | questionnaire type | Required |     
+    	| <b>questionnaireContent</b> | string | content | Required |     
 
 - ### Response message
     | Type   |      Code     |  Message |

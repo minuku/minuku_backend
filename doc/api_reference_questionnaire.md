@@ -1,46 +1,49 @@
-API Reference_project
+API Reference_questionnaire
 ===
 **URIs relative to <em style='color:Dark'><code>https://minukutest.nctu.me/minukutest</code></em>,unless otherwise noted.**
 
 
-# Create project
+# Create questionnaire
 
 - ### Http request 
-<code> POST /project?<em><b>token</b></em>=token </code> 
+<code> POST /project/<em><b>projectname</b></em>/questionnaire?<em><b>token</b></em>=token </code> 
 
 - ### Path parameter 
  
     | Field   |      Description     |  Note |
     |----------|------------|------|
+    | <em><b>projectname<b></em> |  | Required |
  	| <em><b>token<b></em> | contain account  | Required |
 
 
 - ### Request body
-     `{'projectName':'name'}`
+     `{'questionnaireName':'name','questionnaireType':'type'}`
  
      | Key   |      Type     |  Value | Note  |
     |:------|:------------:|:------:|:------:|
-    | <b>projectName</b> | string | project name | Required |
+    | <b>questionnaireName</b> | string | questionnaire name | Required |
+	| <b>questionnaireType</b> | string | questionnaire type | Required |     
 
 - ### Response message
     | Type   |      Code     |  Message |
     |----------|:------------:|:------|
-    |<b>Success message</b> | 200 | `{"msg":"project create success"}` |
-    |<b>Error message</b> | 404 | `{"error":"projectArray empty"}` |
-    |<b>Error message</b> | 404 | `{"error":"project already exist"}` |
+    |<b>Success message</b> | 200 | `{"msg":"questionnaire create success"}` |
+    |<b>Error message</b> | 400 | `{"error":"questionnaireArray empty"}` |
+    |<b>Error message</b> | 400 | `{"error":"questionnaire already exist"}` |
     |<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 ---
 
-# Delete project
+# Delete questionnaire
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>?<em><b>token</b></em>=token</code>
+<code> DELETE /project/<em><b>projectname</b></em>/questionnaire/<em><b>questionnaireName</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
+    |<em><b>questionnaireName</b></em> |  | Required |
     | <em><b>token<b></em> | contain account  | Required |
 
 - ### Request body
@@ -52,56 +55,26 @@ API Reference_project
 
     | Type   |      Code     |  Message |
     |----------|:------------:|:------|
-    |<b>Success message</b> | 200 | `{"msg":"project delete success"}` |
-    |<b>Error message</b> | 404 | `{"error":"projectArray empty"}` |
-    |<b>Error message</b> | 404 | `{"error":"project Not exist"}` |
+    |<b>Success message</b> | 200 | `{"msg":"questionnaire delete success"}` |
+    |<b>Error message</b> | 400 | `{"error":"questionnaireArray empty"}` |
+    |<b>Error message</b> | 400 | `{"error":"questionnaire Not exist"}` |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 
 ---
 
-# Edit project
+# Get questionnaire
 
 - ### Http request 
-<code> PUT /project/<em><b>projectname</b></em>?<em><b>token</b></em>=token</code>
-
-- ### Path parameter 
-    | Field    |      Description     |  Note |
-    |----------|:------------:|:------:|
-    |<em><b>projectname</b></em> |  | Required |
-    | <em><b>token<b></em> | contain account  | Required |
-
-- ### Request body
-     | Key   |      Type     |  Value | Note  |
-    |:------:|:------------:|:------:|:------:|
-    |<b>newProjectName</b> | string | new project name | option |
-
-- ### Response message
-
-    | Type   |      Code     |  Message |
-    |----------|:------------:|:------|
-    |<b>Success message</b> | 200 | `{"msg":"project edit success"}` |
-    |<b>Error message</b> | 404 | `{"error":"projectArray empty"}` |
-    |<b>Error message</b> | 404 | `{"error":"project Not exist"}` |
-	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
-	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
-
-
-
----
-
-
-# GET project
-
-- ### Http request 
-<code>PUT /project/<em><b>projectname</b></em>?<em><b>token</b></em>=token</code>
+<code>GET /project/<em><b>projectname</b></em>/questionnaire/<em><b>questionnaireName</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     
 	| Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
-    |<em><b>token<b></em> | contain account  | Required |
+    |<em><b>questionnaireName</b></em> |  | Required |
+    | <em><b>token<b></em> | contain account  | Required |
 
 - ### Request body
     
@@ -112,22 +85,23 @@ API Reference_project
 
     | Type   |      Code     |  Message |
     |----------|------------|------|
-    |<b>Success message</b> | 200 | `{"projectName": "projectname", "questionnaires": [], "createTime": "Thu Dec 13 06:42:29 2018", "dataCollections": [], "situations": [], "lastEditTime": ""}` |
-    |<b>Error message</b> | 404 | `{"error":"projectArray empty"}` |
-    |<b>Error message</b> | 404 | `{"error":"project Not exist"}` |
+    |<b>Success message</b> | 200 | `{"createTime": "Sun Jul 15 11:16:51 2018", "questionnaireType": "type", "lastEdittime": "", "": [], "datacollectionName": "datacollection1"}` |
+    |<b>Error message</b> | 404 | `{"error":"datacollectionArray empty"}` |
+    |<b>Error message</b> | 404 | `{"error":"datacollection Not exist"}` |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
     
 ---
 
-# Get all projects
+# Get all datacollections
 
 - ### Http request 
-<code>GET /project?<em><b>token</b></em>=token</code>
+<code>GET /project/<em><b>projectname</b></em>/datacollection?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
     |----------|:------------:|:------:|
+    |<em><b>projectname</b></em> |  | Required |
     | <em><b>token<b></em> | contain account  | Required |
 - ### Request body
      | Key   |      Type     |  Value | Note  |
@@ -138,7 +112,7 @@ API Reference_project
 
     | Type   |      Code     |  Message |
     |----------|:------------:|:------|
-    |<b>Success message</b> | 200 | `["project2", "project2"]` |
-    |<b>Error message</b> | 404 | `{"error":"projectArray empty"}` |
+    |<b>Success message</b> | 200 | `["datacollection2", "datacollection1"]` |
+    |<b>Error message</b> | 404 | `{"error":"datacollectionArray empty"}` |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |

@@ -1,187 +1,61 @@
 API Reference_auth
 ===
-**URIs relative to <em style='color:red'><code>https://minukutest.nctu.me/minukutest</code></em>,unless otherwise noted.**
+**URIs relative to <em style='color:Dark'><code>https://minukutest.nctu.me/minukutest</code></em>,unless otherwise noted.**
 
 # login
 
-
-- ### Http request 
-    <code> POST /login </code>
+- ### Http request  
+<code> POST /login </code>
 
 - ### Path parameter 
- 
-    <table>
-        <col width="20%">
-        <col width="100%">
-        <col width="30%">
-        <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>None</b></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-      </table>
+
+    | Field   |      Description     |  Note |
+    |----------|------------|------|
+    | <em><b>token<b></em> | contain account  | Required |
 
 
-- ### Request body
- 
-     <table>
-        <col width="25%">
-        <col width="15%">
-        <col width="100%">
-        <col width="15%">
-        <thead>
-            <tr>
-                <th>Key</th>
-                <th>Type</th>
-                <th>Value</th>
-                <th>Note</th>
-            </tr>
-            <tr><td colspan="4"><code>{'<b>account</b>':'<i>your email addr</i>','<b>password</b>':'<i>passwrod</i>'}</code></td></tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>account</b></td>
-                <td>string</td>
-                <td>user's signup account</td>
-                <td>unWritable</td>
-            </tr>
-            <tr>
-            <td><b>password</b></td>
-                <td>string</td>
-                <td>user's signup password</td>
-                <td>Writable</td>
-            </tr>
-        </tbody>
-    </table>
+- ### Request body 
+	
+    `{'account':'user account','password':'user password'}`
 
+    | Key   |      Type     |  Value | Note  |
+    |------|------------|------|------|
+    | <b>account</b> | string |  user's signup account| unWritable|
+    | <b>password</b> | string |  user's signup password| writable|
 
 - ### Response message
 
-     <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Code</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>Success message</b></td>
-                <td>200</td>
-                <td><code>{'access_token':'your token(binary)','token_type':'Bearer','expires_in':default is 3600 sec}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td><code>{'error': 'wrong password'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td><code>{'error': 'no this account'}</code></td>
-            </tr>
-        </tbody>
-    </table>
+    | Type   |      Code     |  Message |
+    |----------|:------------:|:------|
+    |<b>Success message</b> | 200 | `{'access_token':'your token(binary)','token_type':'Bearer','expires_in':default is 3600 sec}` |
+    |<b>Error message</b> | 404 | `{"error":"wrong password"}` |
+    |<b>Error message</b> | 404 | `{"error":"no this account"}` |
 
 ---
 
 # signup
 
 - ### Http request 
-    <code> POST /signup </code> 
+<code> POST /signup </code>
 
 - ### Path parameter 
- 
-    <table>
-        <col width="20%">
-        <col width="100%">
-        <col width="30%">
-        <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>None</b></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-      </table>
-
+    | Field    |      Description     |  Note |
+    |:----------:|:------------:|:------:|
+    |None |   |  |
 
 - ### Request body
- 
-     <table>
-        <col width="25%">
-        <col width="15%">
-        <col width="100%">
-        <col width="15%">
-        <thead>
-            <tr>
-                <th>Key</th>
-                <th>Type</th>
-                <th>Value</th>
-                <th>Note</th>
-            </tr>
-            <tr><td colspan="4"><code>{'<b>account</b>':'<i>your email addr</i>','<b>username</b>':'<i>username</i>','<b>password</b>':'<i>passwrod</i>}</code></td></tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>account</b></td>
-                <td>string</td>
-                <td>user's signup account</td>
-                <td>unWritable</td>
-            </tr>
-            <tr>
-            <td><b>username</b></td>
-                <td>string</td>
-                <td></td>
-                <td>writable</td>
-            </tr>
-            <tr>
-            <td><b>password</b></td>
-                <td>string</td>
-                <td>user's signup password</td>
-                <td>Writable</td>
-            </tr>
-        </tbody>
-    </table>
 
+    `{'account':'you email address','username':'username','password':'password'}`
 
+     | Key   |      Type     |  Value | Note  |
+    |:------:|:------------:|:------:|:------:|
+    |<b>account</b> | string | user signup account | unWritable |   
+    |<b>username</b> | string |  | writable |
+    |<b>password</b> | string |  |writable  |
 - ### Response message
 
-     <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Code</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>Success message</b></td>
-                <td>200</td>
-                <td><code>{'access_token':'your token(binary)','token_type':'Bearer','expires_in':default is 3600sec}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td><code>{'error': 'this account already used'}</code></td>
-            </tr>
-        </tbody>
-    </table>
+    | Type   |      Code     |  Message |
+    |----------|:------------:|:------|
+    |<b>Success message</b> | 200 | `{'access_token':'your token(binary)','token_type':'Bearer','expires_in':default is 3600sec}` |
+    |<b>Error message</b> | 404 | `{"error":"this account already used"}` |
+    

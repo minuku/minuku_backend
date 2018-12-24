@@ -1,120 +1,37 @@
 API Reference_situation
 ===
-**URIs relative to <em style='color:red'><code>https://minukutest.nctu.me/minukutest</code></em>,unless otherwise noted.**
+**URIs relative to <em style='color:Dark'><code>https://minukutest.nctu.me/minukutest</code></em>,unless otherwise noted.**
 
 
 # Create situation
 
 - ### Http request 
-<code> POST /project/<em><b>projectname</b></em>/situation?<em><b>token</b></em>=token</code> 
+<code> POST /project/<em><b>projectname</b></em>/situation?<em><b>token</b></em>=token </code> 
 
 - ### Path parameter 
  
-     <table>
-        <col width="40%">
-        <col width="100%">
-        <col width="30%">
-        <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><em><b>projectname</b></em></td>
-                <td></td>
-                <td>Required</td> 
-            </tr><tr>
-            <td><em><b>token</b></em></td>
-                <td>contain account</td>
-                <td>Required</td> 
-            </tr>
-        </tbody>
-      </table>
+    | Field   |      Description     |  Note |
+    |----------|------------|------|
+    | <em><b>projectname<b></em> |   | Required |
+ 	| <em><b>token<b></em> | contain account  | Required |
 
 
 - ### Request body
+     `{'situationtName':'name'}`
  
-     <table>
-        <col width="25%">
-        <col width="15%">
-        <col width="100%">
-        <col width="15%">
-        <thead>
-            <tr>
-                <th>Key</th>
-                <th>Type</th>
-                <th>Value</th>
-                <th>Note</th>
-            </tr>
-            <tr><td colspan="4"><code>{'situationName':'name'}</code></td></tr>
-        </thead>
-            <tr>
-            <td><b>situationName</b></td>
-                <td>string</td>
-                <td>situation name</td>
-                <td>Required</td>
-            </tr>
-    </table>
+     | Key   |      Type     |  Value | Note  |
+    |:------|:------------:|:------:|:------:|
+    | <b>situationName</b> | string | situation | Required |
 
 - ### Response message
-
-     <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Code</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>Success message</b></td>
-                <td>200</td>
-                <td><code>{"msg":"situation create success"}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td><code>{"error":"projectArray empty"}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td><code>{"error":"project Not exist"}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td><code>{"error":"situation already exist"}</code></td>
-            </tr>
-			<tr>
-            <td><b>Error message</b></td>
-                <td>401</td>
-                <td><code>HTTP/1.1 401 UNAUTHORIZED
-				Date: Tue, 24 Jul 2018 12:25:33 GMT
-				Server: Apache/2.4.18 (Ubuntu)
-				WWW-Authenticate: error=invalid_token,error_description=The token is wrong
-				Content-Length: 0
-				Access-Control-Allow-Origin: *
-				Content-Type: text/html; charset=utf-8</code></td>
-            </tr>
-			<tr>
-            <td><b>Error message</b></td>
-                <td>401</td>
-                <td><code>HTTP/1.1 401 UNAUTHORIZED
-				Date: Tue, 24 Jul 2018 12:25:33 GMT
-				Server: Apache/2.4.18 (Ubuntu)
-				WWW-Authenticate: error=invalid_token,error_description=The token expired
-				Content-Length: 0
-				Access-Control-Allow-Origin: *
-				Content-Type: text/html; charset=utf-8</code></td>
-            </tr>
-        </tbody>
-    </table>
-    
+    | Type   |      Code     |  Message |
+    |----------|:------------:|:------|
+    |<b>Success message</b> | 200 | `{"msg":"situation create success"}` |
+    |<b>Error message</b> | 404 | `{"error":"situation already exist"}` |
+    |<b>Error message</b> | 404 | `{"error":"projectArray empty"}` |
+    |<b>Error message</b> | 404 | `{"error":"project already exist"}` |
+    |<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 ---
 
 # Delete situation
@@ -123,247 +40,92 @@ API Reference_situation
 <code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
- 
-     <table>
-        <col width="40%">
-        <col width="100%">
-        <col width="30%">
-        <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><em><b>projectname</b></em></td>
-                <td></td>
-                <td>Required</td> 
-            </tr>
-            <tr>
-            <td><em><b>situationname</b><em></td>
-                <td></td>
-                <td>Required</td> 
-            </tr>
-			<tr>
-            <td><em><b>token</b><em></td>
-                <td>contain account</td>
-                <td>Required</td> 
-            </tr>
-        </tbody>
-      </table>
-
+    | Field    |      Description     |  Note |
+    |----------|:------------:|:------:|
+    |<em><b>projectname</b></em> |  | Required |
+    |<em><b>situationname</b></em> |  | Required |
+    | <em><b>token<b></em> | contain account  | Required |
 
 - ### Request body
- 
-     <table>
-        <col width="25%">
-        <col width="15%">
-        <col width="100%">
-        <col width="15%">
-        <thead>
-            <tr>
-                <th>Key</th>
-                <th>Type</th>
-                <th>Value</th>
-                <th>Note</th>
-            </tr>
-            <tr><td></td></tr>
-        </thead>
-            <tr>
-            <td><b>None</b></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-    </table>
+     | Key   |      Type     |  Value | Note  |
+    |:------:|:------------:|:------:|:------:|
+    |<b>None</b> |  |  |  |
 
 - ### Response message
 
-     <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Code</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>Success message</b></td>
-                <td>200</td>
-                <td colspan="4"><code>{'msg':'project delete success'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'project Not exist'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'projectArray empty'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'situationArray empty'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'situation Not exist'}</code></td>
-            </tr>
-			<tr>
-            <td><b>Error message</b></td>
-                <td>401</td>
-                <td><code>HTTP/1.1 401 UNAUTHORIZED
-				Date: Tue, 24 Jul 2018 12:25:33 GMT
-				Server: Apache/2.4.18 (Ubuntu)
-				WWW-Authenticate: error=invalid_token,error_description=The token is wrong
-				Content-Length: 0
-				Access-Control-Allow-Origin: *
-				Content-Type: text/html; charset=utf-8</code></td>
-            </tr>
-			<tr>
-            <td><b>Error message</b></td>
-                <td>401</td>
-                <td><code>HTTP/1.1 401 UNAUTHORIZED
-				Date: Tue, 24 Jul 2018 12:25:33 GMT
-				Server: Apache/2.4.18 (Ubuntu)
-				WWW-Authenticate: error=invalid_token,error_description=The token expired
-				Content-Length: 0
-				Access-Control-Allow-Origin: *
-				Content-Type: text/html; charset=utf-8</code></td>
-            </tr>
-        </tbody>
-    </table>
-    
+    | Type   |      Code     |  Message |
+    |----------|:------------:|:------|
+    |<b>Success message</b> | 200 | `{"msg":"situation delete success"}` |
+    |<b>Error message</b> | 404 | `{"error":"projectArray empty"}` |
+    |<b>Error message</b> | 404 | `{"error":"project Not exist"}` |
+    |<b>Error message</b> | 404 | `{"error":"situationArray empty"}` |
+    |<b>Error message</b> | 404 | `{"error":"situation Not exist"}` |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 
 ---
 
-# Get situation
+# Edit situation
+
+<code> PUT /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>?<em><b>token</b></em>=token</code>
+
+- ### Path parameter 
+    | Field    |      Description     |  Note |
+    |----------|:------------:|:------:|
+    |<em><b>projectname</b></em> |  | Required |
+    |<em><b>situationname</b></em> |  | Required |
+    | <em><b>token<b></em> | contain account  | Required |
+
+
+- ### Request body
+     | Key   |      Type     |  Value | Note  |
+    |:------:|:------------:|:------:|:------:|
+    |<b>newSituationName</b> | string | new situation name | option |
+
+- ### Response message
+
+    | Type   |      Code     |  Message |
+    |----------|:------------:|:------|
+    |<b>Success message</b> | 200 | `{"msg":"project edit success"}` |
+    |<b>Error message</b> | 404 | `{"error":"projectArray empty"}` |
+    |<b>Error message</b> | 404 | `{"error":"project Not exist"}` |
+    |<b>Error message</b> | 404 | `{"error":"situationArray empty"}` |
+    |<b>Error message</b> | 404 | `{"error":"situation Not exist"}` |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+
+---
+
+
+# GET situation
 
 - ### Http request 
 <code> GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
- 
-     <table>
-        <col width="40%">
-        <col width="100%">
-        <col width="30%">
-        <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><em><b>projectname</b></em></td>
-                <td></td>
-                <td>Required</td> 
-            </tr>
-            <tr>
-            <td><em><b>situationname</b></em></td>
-                <td></td>
-                <td>Required</td> 
-            </tr>
-            <tr>
-            <td><em><b>token</b></em></td>
-                <td>contain account</td>
-                <td>Required</td> 
-            </tr>
-        </tbody>
-      </table>
-
+    
+	| Field    |      Description     |  Note |
+    |----------|:------------:|:------:|
+    |<em><b>projectname</b></em> |  | Required |
+    |<em><b>situationname</b></em> |  | Required |
+    |<em><b>token<b></em> | contain account  | Required |
 
 - ### Request body
- 
-     <table>
-        <col width="25%">
-        <col width="15%">
-        <col width="100%">
-        <col width="15%">
-        <thead>
-            <tr>
-                <th>Key</th>
-                <th>Type</th>
-                <th>Value</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-            <tr>
-            <td><b>None</b></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-    </table>
-
+    
+	| Key   |      Type     |  Value | Note  |
+    |:------:|:------------:|:------:|:------:|
+	|<b>None</b> |  |  |  |
 - ### Response message
 
-     <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Code</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>Success message</b></td>
-                <td>200</td>
-                <td colspan="4"><code>{"dataCollections": [], "situationName": "test", "conditions": [], "createTime": "Sat Jul 14 01:27:38 2018", "lastEditTime": ""}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'project Not exist'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'projectArray empty'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'situationArray empty'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'situation Not exist'}</code></td>
-            </tr>
-			<tr>
-            <td><b>Error message</b></td>
-                <td>401</td>
-                <td><code>HTTP/1.1 401 UNAUTHORIZED
-				Date: Tue, 24 Jul 2018 12:25:33 GMT
-				Server: Apache/2.4.18 (Ubuntu)
-				WWW-Authenticate: error=invalid_token,error_description=The token is wrong
-				Content-Length: 0
-				Access-Control-Allow-Origin: *
-				Content-Type: text/html; charset=utf-8</code></td>
-            </tr>
-			<tr>
-            <td><b>Error message</b></td>
-                <td>401</td>
-                <td><code>HTTP/1.1 401 UNAUTHORIZED
-				Date: Tue, 24 Jul 2018 12:25:33 GMT
-				Server: Apache/2.4.18 (Ubuntu)
-				WWW-Authenticate: error=invalid_token,error_description=The token expired
-				Content-Length: 0
-				Access-Control-Allow-Origin: *
-				Content-Type: text/html; charset=utf-8</code></td>
-            </tr>
-        </tbody>
-    </table>
+    | Type   |      Code     |  Message |
+    |----------|------------|------|
+    |<b>Success message</b> | 200 | `{"dataCollections": [], "situationName": "test", "conditions": [], "createTime": "Sat Jul 14 01:27:38 2018", "lastEditTime": ""}` |
+    |<b>Error message</b> | 404 | `{"error":"projectArray empty"}` |
+    |<b>Error message</b> | 404 | `{"error":"project Not exist"}` |
+    |<b>Error message</b> | 404 | `{"error":"situationArray empty"}` |
+    |<b>Error message</b> | 404 | `{"error":"situation Not exist"}` |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
     
 ---
 
@@ -373,113 +135,22 @@ API Reference_situation
 <code> GET /project/<em><b>projectname</b></em>/situation?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
- 
-     <table>
-        <col width="40%">
-        <col width="100%">
-        <col width="30%">
-        <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><em><b>projectname</b></em></td>
-                <td></td>
-                <td>Required</td> 
-            </tr>
-            <tr>
-            <td><em><b>token</b></em></td>
-                <td>contain account</td>
-                <td>Required</td> 
-            </tr>
-        </tbody>
-      </table>
-
+    | Field    |      Description     |  Note |
+    |----------|:------------:|:------:|
+    | <em><b>projectname<b></em> |   | Required |
+    | <em><b>token<b></em> | contain account  | Required |
 
 - ### Request body
- 
-     <table>
-        <col width="25%">
-        <col width="15%">
-        <col width="100%">
-        <col width="15%">
-        <thead>
-            <tr>
-                <th>Key</th>
-                <th>Type</th>
-                <th>Value</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-            <tr>
-            <td><b>None</b></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-    </table>
+     | Key   |      Type     |  Value | Note  |
+    |:------:|:------------:|:------:|:------:|
+    |<b>None</b> |  |  |  |
 
 - ### Response message
 
-     <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Code</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td><b>Success message</b></td>
-                <td>200</td>
-                <td colspan="4"><code>["situation2", "situation1"]</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'projectArray empty'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'project Not exist'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'situationArray empty'}</code></td>
-            </tr>
-            <tr>
-            <td><b>Error message</b></td>
-                <td>404</td>
-                <td colspan="4"><code>{'error':'situation Not exist'}</code></td>
-            </tr>
-			<tr>
-            <td><b>Error message</b></td>
-                <td>401</td>
-                <td><code>HTTP/1.1 401 UNAUTHORIZED
-				Date: Tue, 24 Jul 2018 12:25:33 GMT
-				Server: Apache/2.4.18 (Ubuntu)
-				WWW-Authenticate: error=invalid_token,error_description=The token is wrong
-				Content-Length: 0
-				Access-Control-Allow-Origin: *
-				Content-Type: text/html; charset=utf-8</code></td>
-            </tr>
-			<tr>
-            <td><b>Error message</b></td>
-                <td>401</td>
-                <td><code>HTTP/1.1 401 UNAUTHORIZED
-				Date: Tue, 24 Jul 2018 12:25:33 GMT
-				Server: Apache/2.4.18 (Ubuntu)
-				WWW-Authenticate: error=invalid_token,error_description=The token expired
-				Content-Length: 0
-				Access-Control-Allow-Origin: *
-				Content-Type: text/html; charset=utf-8</code></td>
-            </tr>
-        </tbody>
-    </table>
+    | Type   |      Code     |  Message |
+    |----------|:------------:|:------|
+    |<b>Success message</b> | 200 | `["situation1", "situation2"]` |
+    |<b>Error message</b> | 404 | `{"error":"projectArray empty"}` |
+    |<b>Error message</b> | 404 | `{"error":"situationArray empty"}` |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |

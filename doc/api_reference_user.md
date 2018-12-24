@@ -19,7 +19,13 @@ API Reference_user
     |------|------------|------|------|
     | <b>None</b> |  | | |
 
+- ### Response message
 
+    | Type   |      Code     |  Message |
+    |----------|:------------:|:------|
+    |<b>Success message</b> | 200 | `{"signupTime": "Wed Jul 25 06:33:00 2018", "username": "armuro", "lastLoginTime": "Mon Dec 24 02:08:08 2018", "account": "test", "updateTime": "", "email": "test"}` |
+    |<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token is wrong<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
+	|<b>Error message</b> | 401 | HTTP/1.1 401 UNAUTHORIZED<br>Date: Tue, 24 Jul 2018 12:25:33 GMT<br>Server: Apache/2.4.18 (Ubuntu)<br>WWW-Authenticate: error=invalid_token,error_description=The token expired<br>Content-Length: 0<br>Access-Control-Allow-Origin: *<br>Content-Type: text/html; charset=utf-8 |
 
 ---
 

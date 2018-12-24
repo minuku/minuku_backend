@@ -10,7 +10,7 @@ API Reference_user
 - ### Path parameter 
 
 | Field   |      Description     |  Note |
-    |----------|------------|------|
+    |:----------:|:------------:|:------:|
  	| <em><b>token<b></em> | contain account  | Required |
 
 
@@ -30,7 +30,7 @@ API Reference_user
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
-    |----------|:------------:|:------:|
+    |:----------:|:------------:|:------:|
     | <em><b>token<b></em> | contain account  | Required |
 
 - ### Request body

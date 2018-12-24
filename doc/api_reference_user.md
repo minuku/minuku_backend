@@ -34,7 +34,9 @@ API Reference_user
     | <em><b>token<b></em> | contain account  | Required |
 
 - ### Request body
+
     `{'username':'new username','password':'new passwrod,'email':'new email'}`
+
      | Key   |      Type     |  Value | Note  |
     |:------:|:------------:|:------:|:------:|
     |<b>username</b> | string | new username | writable |

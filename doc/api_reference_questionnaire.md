@@ -22,8 +22,8 @@ API Reference_questionnaire
      | Key   |      Type     |  Value | Note  |
     |:------|:------------:|:------:|:------:|
     | <b>questionnaireName</b> | string | questionnaire name | Required |
-	| <b>questionnaireType</b> | string | questionnaire type | Required |     
-    	| <b>questionnaireContent</b> | string | content | Required |     
+    | <b>questionnaireType</b> | string | questionnaire type | Required |     
+    | <b>questionnaireContent</b> | string | content | Required |     
 
 - ### Response message
     | Type   |      Code     |  Message |

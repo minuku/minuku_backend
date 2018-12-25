@@ -38,7 +38,7 @@ API Reference_device
 # Delete device
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/datacollection<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
+<code> DELETE /project/<em><b>projectname</b></em>/datacollection/<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
@@ -68,7 +68,7 @@ API Reference_device
 # Get device
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>datacollection<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
+<code> DELETE /project/<em><b>projectname</b></em>datacollection/<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     

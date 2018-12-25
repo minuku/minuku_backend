@@ -6,14 +6,13 @@ API Reference_device
 # Create device
 
 - ### Http request 
-<code> POST /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>/device?<em><b>token</b></em>=token </code> 
+<code> POST /project/<em><b>projectname</b></em>/datacollection/<em><b>datacollectionname</b></em>/device?<em><b>token</b></em>=token </code> 
 
 - ### Path parameter 
  
     | Field   |      Description     |  Note |
     |----------|------------|------|
     | <em><b>projectname<b></em> |  | Required |
-    | <em><b>situationname<b></em> |  | Required |
 	| <em><b>datacollectionname<b></em> |  | Required |
  	| <em><b>token<b></em> | contain account  | Required |
 
@@ -39,15 +38,14 @@ API Reference_device
 # Delete device
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
+<code> DELETE /project/<em><b>projectname</b></em>/datacollection<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
-    |<em><b>situationname</b></em> |  | Required |
     |<em><b>datacollectionname</b></em> |  | Required |
-	|<em><b>devicename</b></em> |  | Required |
+    |<em><b>devicename</b></em> |  | Required |
     | <em><b>token<b></em> | contain account  | Required |
 
 - ### Request body
@@ -70,14 +68,13 @@ API Reference_device
 # Get device
 
 - ### Http request 
-<code> DELETE /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
+<code> DELETE /project/<em><b>projectname</b></em>datacollection<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     
 	| Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
-    |<em><b>situationname</b></em> |  | Required |
     |<em><b>datacollectionname</b></em> |  | Required |
 	|<em><b>devicename</b></em> |  | Required |
     | <em><b>token<b></em> | contain account  | Required |
@@ -102,13 +99,12 @@ API Reference_device
 # Get all devices
 
 - ### Http request 
-<code>GET /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>/device?<em><b>token</b></em>=token</code>
+<code>GET /project/<em><b>projectname</b></em>/datacollection/<em><b>datacollectionname</b></em>/device?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     | Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
-    |<em><b>situationname</b></em> |  | Required |
     |<em><b>datacollectionname</b></em> |  | Required |
     | <em><b>token<b></em> | contain account  | Required |
 
@@ -131,14 +127,13 @@ API Reference_device
 # Edit device
 
 - ### Http request 
-<code> PUT /project/<em><b>projectname</b></em>/situation/<em><b>situationname</b></em>/datacollection/<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
+<code> PUT /project/<em><b>projectname</b></em>/datacollection/<em><b>datacollectionname</b></em>/device/<em><b>devicename</b></em>?<em><b>token</b></em>=token</code>
 
 - ### Path parameter 
     
 	| Field    |      Description     |  Note |
     |----------|:------------:|:------:|
     |<em><b>projectname</b></em> |  | Required |
-    |<em><b>situationname</b></em> |  | Required |
     |<em><b>datacollectionname</b></em> |  | Required |
 	|<em><b>devicename</b></em> |  | Required |
     | <em><b>token<b></em> | contain account  | Required |

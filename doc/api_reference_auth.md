@@ -1,6 +1,6 @@
 API Reference_auth
 ===
-**URIs relative to <em style='color:Dark'><code>https://minukutest.nctu.me/minukutest</code></em>,unless otherwise noted.**
+**URIs relative to <em style='color:Dark'><code>http:///minukutest</code></em>,unless otherwise noted.**
 
 # login
 

@@ -56,27 +56,45 @@ def login():
 
 @auth.route('/signup',methods=['GET','POST'])
 def signup():
-	if request.method=='POST':
-		request_message= request.get_json()
-		account = {'account':request_message['account'],'username':request_message['username'],'password':request_message['password'],'email':request_message['account'],'signupTime':time.strftime("%c"),'updateTime':''}
-		for item in db.accountCollection.find():
-			if request_message['account']==item['profile']['account']:
-				return make_response(json.jsonify({'error':'this account already used'}),404)
-		db.accountCollection.insert_one({'profile':account,'projects':[]})
-		payload = {
-                   'exp':datetime.datetime.utcnow()+datetime.timedelta(days=365,minutes=0, seconds=3600),
-                   'iat':datetime.datetime.utcnow(),
-                   'sub':request_message['account']
-                  }
-		auth_token = authenticate(payload)
-		response_body = {
-                         'access_token':auth_token,
-						 'token_type':'Bearer',
+        if request.method=='POST':
+	        request_message= request.get_json()
+	        account = {'account':request_message['account'],'username':request_message['username'],'password':request_message['password'],'email':request_message['account'],'signupTime':time.strftime("%c"),'updateTime':''}
+                try:
+                        for item in db.accountCollection.find():
+    		                if request_message['account']==item['profile']['account']:
+			                return make_response(json.jsonify({'error':'this account already used'}),404)
+		        db.accountCollection.insert_one({'profile':account,'projects':[]})
+		        payload = {
+                        'exp':datetime.datetime.utcnow()+datetime.timedelta(days=365,minutes=0, seconds=3600),
+                        'iat':datetime.datetime.utcnow(),
+                        'sub':request_message['account']
+                        }
+		        auth_token = authenticate(payload)
+		        response_body = {
+                             'access_token':auth_token,
+		    				 'token_type':'Bearer',
 						 'expires_in':'3600'
 						}
-		resp = make_response(json.jsonify(response_body),200)
-		resp.headers['Pragma']='no_cache'
-		resp.headers['Cache-Control']='no-store'
-		return resp
-	
+        	        resp = make_response(json.jsonify(response_body),200)
+	                resp.headers['Pragma']='no_cache'
+		        resp.headers['Cache-Control']='no-store'
+		        return resp
+	        except Exception as e:
+                        db.accountCollection.insert_one({'profile':account,'projects':[]})
+                        payload = {
+                    'exp':datetime.datetime.utcnow()+datetime.timedelta(days=365,minutes=0, seconds=3600),
+                    'iat':datetime.datetime.utcnow(),
+                    'sub':request_message['account']
+                        }
+                        auth_token = authenticate(payload)
+                        response_body = {
+                             'access_token':auth_token,
+                                                 'token_type':'Bearer',
+                                                 'expires_in':'3600'
+                                                }
+                        resp = make_response(json.jsonify(response_body),200)
+                        resp.headers['Pragma']='no_cache'
+                        resp.headers['Cache-Control']='no-store'
+                        return resp
+
 
